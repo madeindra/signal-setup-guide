@@ -18,7 +18,7 @@ What's proven works
 * Nginx Server
 
 What's not proven work
-* Contact Discovery Service (CDS), you still can setup your server without CDS.
+* Contact Discovery Service (CDS), you still can use your signal server without CDS.
 
 At the moment, I don't have Apple Developer license, so I won't be able to help anything regarding Signal iOS.
 
