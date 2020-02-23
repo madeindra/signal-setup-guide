@@ -1,6 +1,13 @@
 # Signal-Guide
 On this repository, you will find guides about Signal Setup that might help people who want to run their own signal server.
 
+## Requirements
+* SSL Certificate for your servers's domain 
+* Google Recaptcha
+* Firebase
+* Twilio
+* Amazon Web Service (AWS)
+
 ## Content
 What's proven works
 * Signal Server
@@ -9,8 +16,6 @@ What's proven works
 * Signal Dependency on Docker
 * Coturn Server
 * Nginx Server
-* Twilio
-* Amazon Web Service (AWS)
 
 What's not proven work
 * Contact Discovery Service (CDS), you still can setup your server without CDS.
