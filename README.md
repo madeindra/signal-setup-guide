@@ -36,7 +36,8 @@ Q: Can I subtitute Twilio to ... ?
 A: Yes, it is possible, you need to change TwilioSmsSender Class
 
 ## Cotributing
-You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help.
+You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help. If you have any suggestion you can
+<a href = "mailto:indrawp@protonmail.com">reach me via email</a>.
 
 ## Donating
 You can donate to me if you think this guide has helped you, your donation will greatly appreciated.
