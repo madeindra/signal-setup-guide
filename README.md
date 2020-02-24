@@ -31,9 +31,13 @@ Q: Can I subtitute AWS to MinIO?
 
 A: Someone did that in a pull request here: <a href="https://github.com/signalapp/Signal-Server/pull/76">Use MinIO instead of the AWS</a>
 
-Q: Can I subtitute Twilio to ... ?
+Q: Can I disable / change Twilio? (by getting the generated OTP on the server)
 
-A: Yes, it is possible, you need to change TwilioSmsSender Class
+A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on <a href="https://github.com/indrawp/Signal-Guide/blob/master/selfsignedcertificate-PushServiceSocket.java">nosmsotp-TwilioSmsSender.java</a>
+
+Q: Can I use Signal in localhost / internal IP / self-signed certificate (by trusting all certificate)
+
+A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/indrawp/Signal-Guide/blob/master/selfsignedcertificate-PushServiceSocket.java">selfsignedcertificate-PushServiceSocket.java</a>
 
 ## Cotributing
 You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help. If you have any suggestion you can
