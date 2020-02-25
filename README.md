@@ -37,7 +37,7 @@ A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on
 
 Q: Can I use Signal in localhost / internal IP / self-signed certificate (by trusting all certificate)
 
-A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/indrawp/Signal-Guide/blob/master/selfsignedcertificate-PushServiceSocket.java">selfsignedcertificate-PushServiceSocket.java</a>
+A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/indrawp/Signal-Guide/blob/master/selfsignedcertificate-PushServiceSocket.java">selfsignedcertificate-PushServiceSocket.java</a> and <a href="https://github.com/indrawp/Signal-Guide/blob/master/selfsignedcertificate-WebSocketConnection.java">selfsignedcertificate-WebSocketConnection.java</a>
 
 ## Cotributing
 You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help. If you have any suggestion you can
