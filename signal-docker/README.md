@@ -41,6 +41,8 @@ redis_slave      docker-entrypoint.sh redis ...   Up      6379/tcp, 0.0.0.0:6380
 
 `192.168.1.5` is my IP but you should find your local en0 IP.
 
+## Author
+This docker-compose is made by [xavierchow](https://github.com/xavierchow/docker-redis-sentinel).
 
 ## License
 
