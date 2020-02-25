@@ -47,3 +47,45 @@ import java.security.cert.CertificateException;
       throw new AssertionError(e);
     }
   }
+
+  private OkHttpClient createAttachmentClient() {
+    try {
+      final TrustManager[] trustAllCerts = new TrustManager[]{
+              new X509TrustManager() {
+
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain,
+                                               String authType) throws
+                        CertificateException {
+                }
+
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain,
+                                               String authType) throws
+                        CertificateException {
+                }
+                @Override
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                  return new java.security.cert.X509Certificate[]{};
+                }
+              }
+      };
+
+      SSLContext sslContext = SSLContext.getInstance("SSL");
+      sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+
+      final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+      OkHttpClient.Builder builder = new OkHttpClient.Builder();
+      builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
+
+      builder.hostnameVerifier(new HostnameVerifier() {
+        @Override
+        public boolean verify(String hostname, SSLSession session) {
+          return true;
+        }
+      });
+      return builder.build();
+    } catch (NoSuchAlgorithmException | KeyManagementException e) {
+      throw new AssertionError(e);
+    }
+  }
