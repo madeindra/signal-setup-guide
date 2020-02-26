@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - 9000:9000
+    environment:
+      - MINIO_ACCESS_KEY=Q3AM3UQ867SPQQA43P2F
+      - MINIO_SECRET_KEY=zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+    command: server /export
+    volumes:
+      - minio:/root/.minio
+    networks:
+      - bridge
+      
+  mc:
+    image: minio/mc
+    depends_on:
+      - minio
+    container_name: mc
+    environment:
+      - MINIO_ACCESS_KEY=Q3AM3UQ867SPQQA43P2F
+      - MINIO_SECRET_KEY=zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc config host add myminio http://minio:9000 $${MINIO_ACCESS_KEY} $${MINIO_SECRET_KEY}) do echo '...waiting...' && sleep 1; done;
+      /usr/bin/mc mb myminio/name-of-bucket;
+      /usr/bin/mc policy set public myminio/name-of-bucket;
+      exit 0;
+      "
+    networks:
+      - bridge
+
+volumes:
+  minio:
+
+networks:
+  bridge:
