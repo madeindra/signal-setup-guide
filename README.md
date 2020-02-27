@@ -29,7 +29,8 @@ A: My suggestion is first you need to setup normal signal server and check if it
 
 Q: Can I subtitute AWS to MinIO?
 
-A: Someone did that in a pull request here: <a href="https://github.com/signalapp/Signal-Server/pull/76">Use MinIO instead of the AWS</a>
+A: I tried it here <a href="https://github.com/indrawp/Signal-Guide/tree/master/signal-minio">signal-minio</a> using modification created by <a href="https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18">kondal789rao
+</a>. Someone also did a pull request here: <a href="https://github.com/signalapp/Signal-Server/pull/76">Use MinIO instead of the AWS</a>. 
 
 Q: Can I disable / change Twilio? (by getting the generated OTP on the server)
 
