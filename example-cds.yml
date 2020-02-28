@@ -1,0 +1,35 @@
+enclave:
+  spid:         QWERTY # Change this to your Service Provider ID
+  iasSecretKey: qwerty # Change this to IAS Secret Key
+  iasHost:      https://api.trustedservices.intel.com/sgx/dev
+  acceptGroupOutOfDate: false
+  instances:
+   - mrenclave: qwerty
+     debug:     true
+
+signal:
+  userToken:    qwerty # Change this to signal user token
+  serverToken:  qwerty # Change this to signal server token
+
+redis:
+  masterName:   mysentinel
+  sentinelUrls:
+   - 127.0.0.1:26379
+
+directory:
+  initialSize: 10000000
+  minLoadFactor: 0.75
+  maxLoadFactor: 0.85
+  sqs:
+    accessKey: QWERTY # Change this to your AWS IAM Access Key
+    accessSecret: qwerty # Change this to your AWS IAM Secret
+    queueUrl: https://sqs.ap-southeast-1.amazonaws.com/637423488741/chatqueue.fifo # Change this to your AWS SQS (FIFO) URL
+    queueRegion: ap-southeast-1 # Change this to your bucket's region
+
+limits:
+  contactQueries:
+    bucketSize:        50000
+    leakRatePerMinute: 50000
+  remoteAttestations:
+    bucketSize:        50000
+    leakRatePerMinute: 50000
