@@ -1,35 +1,39 @@
 enclave:
-  spid:         QWERTY # Change this to your Service Provider ID
-  iasSecretKey: qwerty # Change this to IAS Secret Key
-  iasHost:      https://api.trustedservices.intel.com/sgx/dev
-  acceptGroupOutOfDate: false
+  spid:        # Service Provider ID
+  certificate: # Service Provider Certificate
+  key:         # Service Provider Key
+  iasHost: https://api.trustedservices.intel.com/sgx/dev # IAS Host to talk to (testing or production)
+  acceptGroupOutOfDate: false # Whether to serve IAS responses with GROUP_OUT_OF_DATE instead of OK [true|false]
   instances:
-   - mrenclave: qwerty
-     debug:     true
+   - mrenclave: # mrenclave value 1
+     debug:     # Whether this is a debug or production enclave [true|false]
+   - mrenclave: # mrenclave value 2
+     debug:     # Whether this is a debug or production enclave [true|false]
 
 signal:
-  userToken:    qwerty # Change this to signal user token
-  serverToken:  qwerty # Change this to signal server token
+  userToken:    # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+  serverToken:  # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
 
 redis:
-  masterName:   mysentinel
+  masterName: mysentinel  # Redis Sentinel master name
   sentinelUrls:
-   - 127.0.0.1:26379
+   - 127.0.0.1:26379 # Redis Sentinel host:port
 
 directory:
-  initialSize: 10000000
+  initialSize:   10000000
   minLoadFactor: 0.75
   maxLoadFactor: 0.85
-  sqs:
-    accessKey: QWERTY # Change this to your AWS IAM Access Key
-    accessSecret: qwerty # Change this to your AWS IAM Secret
-    queueUrl: https://sqs.ap-southeast-1.amazonaws.com/637423488741/chatqueue.fifo # Change this to your AWS SQS (FIFO) URL
-    queueRegion: ap-southeast-1 # Change this to your bucket's region
 
 limits:
   contactQueries:
-    bucketSize:        50000
-    leakRatePerMinute: 50000
+    bucketSize:        50000 # Leaky bucket size
+    leakRatePerMinute: 50000 # Leaky bucket rate per minute
   remoteAttestations:
-    bucketSize:        50000
-    leakRatePerMinute: 50000
+    bucketSize:        50000 # Leaky bucket size
+    leakRatePerMinute: 50000 # Leaky bucket rate per minute
+
+metrics:
+  reporters:
+    - type:     json # wavefront metrics reporter
+      hostname:      # wavefront endpoint hostname
+      token:         # wavefront endpoint token
