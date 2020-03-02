@@ -17,6 +17,9 @@ npm install --global --production --add-python-to-path windows-build-tools
 ```
 
 1c. Install python, gcc, g++, make (linux)
+```
+sudo apt-get install python, gcc, g++, make
+```
 
 2. Clone signal-desktop
 
