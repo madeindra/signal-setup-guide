@@ -5,62 +5,62 @@ This guid is written by using Signal Desktop on branch Master version 1.30.0-bet
 * NVM 12.4.0
 
 ## How To
-1. Install xcode (Macbook)
+1a. Install xcode (Macbook)
 ```
 xcode-select --install # Install Command Line Tools if you haven't already.
 sudo xcode-select --switch /Library/Developer/CommandLineTools # Enable command line tools
 ```
 
-2. Install .Net 4.5.1 & Windows SDK 8.1 & Windows Build Tools (Win 7)
+1b. Install .Net 4.5.1 & Windows SDK 8.1 & Windows Build Tools (Win 7)
 ```
 npm install --global --production --add-python-to-path windows-build-tools
 ```
 
-3. Install python, gcc, g++, make (linux)
+1c. Install python, gcc, g++, make (linux)
 
-4. Clone signal-desktop
+2. Clone signal-desktop
 
-5. Mount signal desktop directory
+3. Mount signal desktop directory
 ```
 cd Signal-Desktop
 ```
 
-6. Install yarn
+4. Install yarn
 ```
 npm install —global yarn
 ```
 
-7. Install & build with yarn
+5. Install & build with yarn
 ```
 yarn install —frozen-lockfile
 ```
 
-8. Generate final JS & CSS
+6. Generate final JS & CSS
 ```
 yarn grunt
 ```
 
-9. Generate full-set icon
+7. Generate full-set icon
 ```
 yarn icon-gen
 ```
 
-10. Build with webpack
+8. Build with webpack
 ```
 yarn build:webpack
 ```
 
-11. You can test with
+9. You can test with
 ```
 yarn test 
 ```
 
-12. Start the app
+10. Start the app
 ```
 yarn start
 ```
 
-13. To connect to own production server, `create local-development.json`, the value is the same as `production.json` but without `updateEnabled`.
+11. To connect to own production server, `create local-development.json`, the value is the same as `production.json` but without `updateEnabled`.
 
 
 ## Using own Server
