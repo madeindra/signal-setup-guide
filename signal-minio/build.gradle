@@ -1,0 +1,3 @@
+// app/build.gradle
+
+buildConfigField "String", "SIGNAL_CDN_URL", "\"https://domain.com/change-to-your-bucket-name\""
