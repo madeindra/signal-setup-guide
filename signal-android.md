@@ -31,6 +31,29 @@ openssl pkcs12 -export -out keystore.pkcs12 -in fullchain.pem -inkey privkey.pem
 
 8. Sync your project then build.
 
+## Custom Server
+Change `app/build.gradle` to use your server. Always use https and without trailing slash on the url.
+```
+// app/build.gradle
+
+        buildConfigField "long", "BUILD_TIMESTAMP", getLastCommitTimestamp() + "L"
+        buildConfigField "String", "SIGNAL_URL", "\"https://domain.com\""
+        buildConfigField "String", "STORAGE_URL", "\"https://domain.com\""
+        buildConfigField "String", "SIGNAL_CDN_URL", "\"https://your-own.cloudfrontnet\""
+        buildConfigField "String", "SIGNAL_CONTACT_DISCOVERY_URL", "\"https://domain.com\""
+        buildConfigField "String", "SIGNAL_SERVICE_STATUS_URL", "\"https://domain.com\""
+        buildConfigField "String", "SIGNAL_KEY_BACKUP_URL", "\"https://domain.com\""
+        buildConfigField "String", "CONTENT_PROXY_HOST", "\"https://domain.com\""
+        buildConfigField "int", "CONTENT_PROXY_PORT", "443"
+        buildConfigField "String", "USER_AGENT", "\"OWA\""
+        buildConfigField "boolean", "DEV_BUILD", "false"
+        buildConfigField "String", "MRENCLAVE", "\"cd6cfc342937b23b1bdd3bbf9721aa5615ac9ff50a75c5527d441cd3276826c9\""
+        buildConfigField "String", "KEY_BACKUP_ENCLAVE_NAME", "\"f2e2a5004794a6c1bac5c4949eadbc243dd02e02d1a93f10fe24584fb70815d8\""
+        buildConfigField "String", "KEY_BACKUP_MRENCLAVE", "\"f51f435802ada769e67aaf5744372bb7e7d519eecf996d335eb5b46b872b5789\""
+        buildConfigField "String", "UNIDENTIFIED_SENDER_TRUST_ROOT", "\"CHANGE-TO-YOUR-UNIDENTIFIED-DELIVERY-PUBLIC-KEY\""
+
+```
+
 ## FAQ
 Q: Why did I need to change the Attachment Path?
 
