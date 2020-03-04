@@ -27,18 +27,26 @@ Q: Will I be able to do ... with Signal?
 
 A: My suggestion is first you need to setup normal signal server and check if it will fulfill your need. 
 
+Q: My chat only goes one way or can't send chat even when the server already set properly.
+
+A: Probably caused by keystore haven't contain your SSL certificate / certificate did not match the url / you have not setup the Unidentified Delivery properly in the client. Will be explained in each guide of the server & clients.
+
+Q: How to setup Turn Server? I can't do voice/video call.
+
+A: Probably related to your port, either it is not allowed by the firewall or it is not properly set. See my example config on <a href="https://github.com/indrawp/Signal-Guide/tree/master/coturn-server">Coturn Server<a/>
+
 Q: Can I subtitute AWS to MinIO?
 
 A: I tried it here <a href="https://github.com/indrawp/Signal-Guide/tree/master/signal-minio">signal-minio</a> using modification created by <a href="https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18">kondal789rao
-</a>. Someone also did a pull request here: <a href="https://github.com/signalapp/Signal-Server/pull/76">Use MinIO instead of the AWS</a>. 
+</a>. Someone also did a pull request here: <a href="https://github.com/signalapp/Signal-Server/pull/76">Use MinIO instead of the AWS</a>. Also you can try to look into <a href="https://github.com/localstack/localstack">Localstack</a> for local development.
 
 Q: Can I disable / change Twilio? (by getting the generated OTP on the server)
 
-A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on <a href="https://github.com/indrawp/Signal-Guide/blob/master/selfsignedcertificate-PushServiceSocket.java">nosmsotp-TwilioSmsSender.java</a>
+A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on <a href="https://github.com/indrawp/Signal-Guide/tree/master/signal-server-no-twilio">Signal Server Without Twilio</a>.
 
 Q: Can I use Signal in localhost / internal IP / self-signed certificate (by trusting all certificate)
 
-A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/indrawp/Signal-Guide/blob/master/selfsignedcertificate-PushServiceSocket.java">selfsignedcertificate-PushServiceSocket.java</a> and <a href="https://github.com/indrawp/Signal-Guide/blob/master/selfsignedcertificate-WebSocketConnection.java">selfsignedcertificate-WebSocketConnection.java</a>
+A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/indrawp/Signal-Guide/tree/master/signal-server-self-signed-certificate">Signal Server Self Signed Certificate</a>.
 
 ## Cotributing
 You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help. If you have any suggestion you can
