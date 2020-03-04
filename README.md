@@ -2,25 +2,24 @@
 On this repository, you will find guides about Signal Setup that might help people who want to run their own signal server.
 
 ## Requirements
-* SSL Certificate for your servers's domain 
-* Google Recaptcha
-* Firebase
-* Twilio
-* Amazon Web Service (AWS)
+* SSL Certificate of your server's domain (For secure communication, can be bypassed but it will be less secure)
+* Google Recaptcha (For anti-spam in authentication)
+* Firebase (For push notification, if not used, the notification will not work correctly)
+* Twilio (For SMS OTP, can be by passsed by priting the OTP to another means to user)
+* Amazon Web Service (For Profile Picture / Avatar, Attachments, and CDS Queue. Can be subtituted with MinIO & LocalStack)
 
 ## Content
 What's proven works
 * Signal Server
 * Signal Android
 * Signal Desktop
-* Signal Dependency on Docker
-* Coturn Server
-* Nginx Server
+* Signal Dependency on Docker (PostgreSQL & Redis)
+* Turn Server (CoTurn)
+* Nginx Server (Port Forwarding HTTPS to Signal Server Port)
 
 What's not proven work
 * Contact Discovery Service (CDS), you still can use your signal server without CDS.
-
-At the moment, I don't have Apple Developer license, so I won't be able to help anything regarding Signal iOS.
+* Signal IOS, at the moment, I don't have Apple Developer license, so I won't be able to help anything regarding Signal iOS.
 
 ## FAQ
 Q: Will I be able to do ... with Signal?
