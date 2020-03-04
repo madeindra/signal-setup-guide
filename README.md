@@ -47,6 +47,12 @@ Q: Can I use Signal in localhost / internal IP / self-signed certificate (by tru
 
 A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/indrawp/Signal-Guide/tree/master/signal-server-self-signed-certificate">Signal Server Self Signed Certificate</a>.
 
+## ToDos
+
+* CDS Server: Find server with Intel SGX to try to setup custom CDS Server.
+* Signal iOS: Still can't afford Apple Dev License, find someone with license.
+* Load Test: I want to see the performance of the custom server under stress, will update later.
+
 ## Cotributing
 You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help. If you have any suggestion you can
 <a href = "mailto:indrawp@protonmail.com">reach me via email</a>.
