@@ -1,11 +1,11 @@
 attachments: # MinIO configuration
   accessKey:    Q3AM3UQ867SPQQA43P2F # Default, change to your own access key
   accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG # Default, change to your own secret key
-  bucket:       change-to-your-bucket-name
-  region:       us-east-1
+  bucket:       change-to-your-bucket-name # use your bucket name here
+  region:       us-east-1 # Default region
 
 cdn: # MinIO configuration
-  accessKey:    Q3AM3UQ867SPQQA43P2F
-  accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
-  bucket:       change-to-your-bucket-name
-  region:       us-east-1
+  accessKey:    Q3AM3UQ867SPQQA43P2F # Default, change to your own access key
+  accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG # Default, change to your own secret key
+  bucket:       change-to-your-bucket-name # use your bucket name here
+  region:       us-east-1 # Default region
