@@ -67,15 +67,31 @@ yarn start
 
 
 ## Using own Server
-1. Update deafult.json ServerURL & CDN by using your Server URL & CDN url
+1. Update `config/deafult.json`, set serverUrl & cdnUrl by using your Server URL & your CDN url.
 
-2. Update CertificateAuthority using CA’s SSL Certificate
+2. Update `config/default.json`, set certificateAuthority using CA’s SSL Certificate.
 
-3. Update serverTrustRoot using CAPublicKey (Also used in android as UNIDENTIFIED SENDER TRUST ROOT)
+3. Update `config/default.json`, set serverTrustRoot using your CAPublicKey (Also used in android as UNIDENTIFIED SENDER TRUST ROOT).
 
-4. Update `getAttachment` and `putAttachment` to remove `/attachments` (Same with android)
+4. Update `js/modules/web_api.js`, find functions called `getAttachment` and `putAttachment`, then replace `${cdnUrl}/attachments/${id}` wo `${cdnUrl}/` **(Do this if you do the same in android client)**.
 
-5. Give `certificateAuthority` a default value of CDN’s ROOT CA Cert on `getAttachment` and `putAttachment`
+5. Still on the same functions, set a default value for `certificateAuthority` variable (see below).
+
+**change this**
+```
+...
+certificateAuthority,
+...
+```
+
+
+**to this**
+```
+...
+certificateAuthority: "-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE-----\n",
+...
+```
+
 
 6. `yarn generate`
 
