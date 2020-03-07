@@ -55,16 +55,14 @@ Change `app/build.gradle` to use your server. Always use https and without trail
 
 ```
 
-## Custom Package Nae
+## Custom Package Name
 To create your own Signal-based Chat application, you need to rename the package. This is to prevent your app conflicting with signal on Play Store and on user's phone.
 
 1. Open Signal-Android in Android Studio.
 
 Signal-Android package name is `org.thoughtcrime.securesms` and in the project it's shown as a structure like this
 
-```
-app/src/main/java/**org**/**thoughtcrime**/**securesms**/
-```
+`app/src/main/java/**org**/**thoughtcrime**/**securesms**/`
 
 It is recommended that your desired package name also consist of three part, for example `com.company.chatname`.
 
@@ -80,18 +78,16 @@ If you have done those step, you can already build your own app and install it t
 
 6. Change the package name in native code, find `org_thoughtcrime_securesms` and replace with your package name, **remember to use underscore (_) like how it is before**. It is located on:
 
-```
-app/jni/Android.mk
-app/jni/utils/org_thoughtcrime_securesms_util_FileUtils.cpp
-app/jni/utils/org_thoughtcrime_securesms_util_FileUtils.h
-```
+* `app/jni/Android.mk`
+* `app/jni/utils/org_thoughtcrime_securesms_util_FileUtils.cpp`
+* `app/jni/utils/org_thoughtcrime_securesms_util_FileUtils.h`
+
 
 The last two files (.cpp and .h) also need to be renamed to follow your new package name, for example:
 
-```
-app/jni/utils/com_company_chatname_util_FileUtils.cpp
-app/jni/utils/com_company_chatname_util_FileUtils.h
-```
+* `app/jni/utils/com_company_chatname_util_FileUtils.cpp`
+* `app/jni/utils/com_company_chatname_util_FileUtils.h`
+
 
 7. Install NDK, and run this command in your directory
 
@@ -103,25 +99,19 @@ If the command is not recognized, it means your NDK installation has not been ad
 
 8. It will generate 4 `libnative-utils.so` inside `app/jni`. Use it to replace the originals that located in here:
 
-```
-app/src/main/jniLibs/arm64-v8a/libnative-utils.so
-app/src/main/jniLibs/armeabi-v7a/libnative-utils.so
-app/src/main/jniLibs/x86/libnative-utils.so
-app/src/main/jniLibs/x86_64/libnative-utils.so
-```
+* `app/src/main/jniLibs/arm64-v8a/libnative-utils.so`
+* `app/src/main/jniLibs/armeabi-v7a/libnative-utils.so`
+* `app/src/main/jniLibs/x86/libnative-utils.so`
+* `app/src/main/jniLibs/x86_64/libnative-utils.so`
 
 9. Update the package name that formated as `org/thoughtcrime/securesms` and replace with your package name, **remember to use slash (/) like how it is before**. It is located on: 
 
-```
-app/lint-baseline.xml
-app/lint.xml
-```
+* `app/lint-baseline.xml`
+* `app/lint.xml`
 
 10. Remember to update the application name in :
 
-```
-app/src/main/res/values/strings.xml
-```
+`app/src/main/res/values/strings.xml`
 
 ## FAQ
 Q: Why did I need to change the Attachment Path?
