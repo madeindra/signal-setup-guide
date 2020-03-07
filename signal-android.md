@@ -54,6 +54,9 @@ Change `app/build.gradle` to use your server. Always use https and without trail
 
 ```
 
+## Custom Package Nae
+TODO
+
 ## FAQ
 Q: Why did I need to change the Attachment Path?
 
