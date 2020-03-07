@@ -62,7 +62,7 @@ To create your own Signal-based Chat application, you need to rename the package
 
 Signal-Android package name is `org.thoughtcrime.securesms` and in the project it's shown as a structure like this
 
-`app/src/main/java/**org**/**thoughtcrime**/**securesms**/`
+`app/src/main/java/org/thoughtcrime/securesms/`
 
 It is recommended that your desired package name also consist of three part, for example `com.company.chatname`.
 
