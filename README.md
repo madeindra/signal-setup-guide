@@ -1,4 +1,4 @@
-# Signal-Guide
+# Setup Guide for Signal
 On this repository, you will find guides about Signal Setup that might help people who want to run their own signal server.
 
 ## Requirements
