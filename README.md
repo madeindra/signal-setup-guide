@@ -60,4 +60,4 @@ You are welcome to contribute on this guide. If you have any questions please wr
 ## Donating
 You can donate to me if you think this guide has helped you, your donation will greatly appreciated.
 
-<a href ="https://www.paypal.me/indrawp" target="_blank"><img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" height="75"></a>
+Bitcoin (BTC): 1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE
