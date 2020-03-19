@@ -25,7 +25,7 @@ java -jar service/target/TextSecureServer-2.92.jar certificate -ca
 
 Use the Private key to generate certificate (key id can be random, i use 1234)
 ```
-java -jar service/target/TextSecureServer-2.55.jar certificate --key <priv_key_from_step_above> --id <the_key_ID>
+java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_from_step_above> --id <the_key_ID>
 ```
 
 4.	Run postgres, redis, coturn (I suggest you use docker-compose)
