@@ -40,7 +40,7 @@ java -jar service/target/TextSecureServer-2.92.jar messagedb migrate service/con
 
 6.	Run the server (config.yml is from step 1)
 ```
-java -jar service/target/TextSecureServer-2.92.jar server config.yml
+java -jar service/target/TextSecureServer-2.92.jar server service/config/signal.yml
 ```
 
 ## FAQ
