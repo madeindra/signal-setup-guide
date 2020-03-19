@@ -32,10 +32,10 @@ java -jar service/target/TextSecureServer-2.55.jar certificate --key <priv_key_f
 
 5.	Migrate databases
 ```
-java -jar service/targetTextSecure-2.92.jar abusedb migrate service/config/config.yml
-java -jar service/targetTextSecure-2.92.jar accountdb migrate service/config/config.yml
-java -jar service/targetTextSecure-2.92.jar keysdb migrate service/config/config.yml
-java -jar service/targetTextSecure-2.92.jar messagedb migrate service/config/config.yml
+java -jar service/target/TextSecureServer-2.92.jar abusedb migrate service/config/signal.yml
+java -jar service/target/TextSecureServer-2.92.jar accountdb migrate service/config/signal.yml
+java -jar service/target/TextSecureServer-2.92.jar keysdb migrate service/config/signal.yml
+java -jar service/target/TextSecureServer-2.92.jar messagedb migrate service/config/signal.yml
 ```
 
 6.	Run the server (config.yml is from step 1)
