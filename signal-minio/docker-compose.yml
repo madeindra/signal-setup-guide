@@ -13,7 +13,7 @@ services:
       - MINIO_DOMAIN=localhost
     command: server /export
     volumes:
-      - minio:/root/.minio
+      - ./config:/root/.minio
     networks:
       - bridge
       
@@ -34,9 +34,6 @@ services:
       "
     networks:
       - bridge
-
-volumes:
-  minio:
 
 networks:
   bridge:
