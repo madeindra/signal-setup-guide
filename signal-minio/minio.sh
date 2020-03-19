@@ -8,7 +8,7 @@
 bucket=$1
 file=$2
 
-host=localhost:9000
+host=domain.com:9000
 s3_key='Q3AM3UQ867SPQQA43P2F'
 s3_secret='zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
 
@@ -24,4 +24,4 @@ curl -v -X PUT -T "${file}" \
           -H "Date: ${date}" \
           -H "Content-Type: ${content_type}" \
           -H "Authorization: AWS ${s3_key}:${signature}" \
-          http://$host${resource}
+          https://$host${resource}
