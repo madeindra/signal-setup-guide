@@ -29,7 +29,7 @@ services:
     entrypoint: >
       /bin/sh -c "
       until (/usr/bin/mc config host add s3 https://change-to-your-domain.com:9000 $${MINIO_ACCESS_KEY} $${MINIO_SECRET_KEY}) do echo '...waiting...' && sleep 1; done;
-      /usr/bin/mc mb s3/name-of-bucket;
+      /usr/bin/mc mb s3/name-of-bucket --region us-east-1;
       /usr/bin/mc policy set public s3/name-of-bucket;
       exit 0;
       "
