@@ -41,6 +41,12 @@ redis_slave      docker-entrypoint.sh redis ...   Up      6379/tcp, 0.0.0.0:6380
 
 `192.168.1.5` is my IP but you should find your local en0 IP.
 
+## For macOS users
+If yor server is macOs you are limited to specific folders to mount docker volumes, so for example
+the volume on "./redis_master:/data" may not be mounted and produce an error since the relative path "./" is not likely to be included in the inclusion list.
+In order set up the volumes properly refer to:
+https://docs.docker.com/docker-for-mac/osxfs/#namespaces
+
 ## Author
 This docker-compose is made by [xavierchow](https://github.com/xavierchow/docker-redis-sentinel).
 
