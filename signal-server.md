@@ -59,3 +59,12 @@ A: CDN Cloudfront, S3 Bucket, SQS FIFO type, and IAM for the key.
 Q: How do I disable AccountCrawler Error?
 
 A: Disable accountDatabaseCrawler logging by commenting `environment.lifecycle().manage(accountDatabaseCrawler);` it is located in `service/src/main/java/org/whispersystems/textsecuregcm/WhisperServerService.java`.
+
+Q: I got an error from updating profile name.
+
+A: Some people reported that the url return 400 or 404, we suspect this has to do with Nginx URL Decoding. When a url contains "%2F" it is translated to "/" thus causing the error. Adding `$uri` to `proxy_pass` url can prevent this.
+
+```
+location / {
+		proxy_pass http://127.0.0.1:8080$uri;
+```
