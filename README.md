@@ -49,9 +49,10 @@ A: Yes, it is possible but it is not secure, see example on <a href="https://git
 
 ## ToDos
 
-* CDS Server: Find server with Intel SGX to try to setup custom CDS Server. *lately there's a lot of news about leaking in Intel SGX, I think Signal will stop using this method in near future, not to mention that it's not required if you have no concern about contact's privacy*.
+* CDS Server: Find server with Intel SGX to try to setup custom CDS Server.
 * Signal iOS: Still can't afford Apple Dev License, find someone with license.
 * Load Test: I want to see the performance of the custom server under stress, will update later.
+* **Lately there's a lot of news about leaking in Intel SGX, I think Signal will stop using this method in near future, not to mention that it's not required if you have no concern about contact's privacy**
 
 ## Cotributing
 You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help. If you have any suggestion you can
