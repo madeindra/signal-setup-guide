@@ -9,7 +9,7 @@ This guide is written by using Signal v2.92.
 * Twilio
 * AWS
 
-1. Create your own `config.yml`
+1. Create your own `config.yml`, put it inside `signal-server/service/config/`
 
 2.	Build the server (I suggest you keep the DskipTests if you do a modification)
 ```
@@ -32,16 +32,22 @@ java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_f
 
 5.	Migrate databases
 ```
-java -jar service/target/TextSecureServer-2.92.jar abusedb migrate service/config/signal.yml
-java -jar service/target/TextSecureServer-2.92.jar accountdb migrate service/config/signal.yml
-java -jar service/target/TextSecureServer-2.92.jar keysdb migrate service/config/signal.yml
-java -jar service/target/TextSecureServer-2.92.jar messagedb migrate service/config/signal.yml
+java -jar service/target/TextSecureServer-2.92.jar abusedb migrate service/config/config.yml
+java -jar service/target/TextSecureServer-2.92.jar accountdb migrate service/config/config.yml
+java -jar service/target/TextSecureServer-2.92.jar keysdb migrate service/config/config.yml
+java -jar service/target/TextSecureServer-2.92.jar messagedb migrate service/config/config.yml
 ```
 
 6.	Run the server (config.yml is from step 1)
 ```
-java -jar service/target/TextSecureServer-2.92.jar server service/config/signal.yml
+java -jar service/target/TextSecureServer-2.92.jar server service/config/config.yml
 ```
+
+7. To run the server in the background (run continously), use nohup
+```
+nohup java -jar service/target/TextSecureServer-2.92.jar server service/config/signal.yml > /dev/null &
+```
+
 
 ## FAQ
 Q: How do I get Recapthca?
@@ -58,7 +64,20 @@ A: CDN Cloudfront, S3 Bucket, SQS FIFO type, and IAM for the key.
 
 Q: How do I disable AccountCrawler Error?
 
-A: Disable accountDatabaseCrawler logging by commenting `environment.lifecycle().manage(accountDatabaseCrawler);` it is located in `service/src/main/java/org/whispersystems/textsecuregcm/WhisperServerService.java`.
+A: Disable accountDatabaseCrawler logging by commenting `environment.lifecycle().manage(accountDatabaseCrawler);` it is located in `service/src/main/java/org/whispersystems/textsecuregcm/WhisperServerService.java`. Rebuild the server then rerun it after you did the modification.
+
+```
+...
+
+apnSender.setApnFallbackManager(apnFallbackManager);
+environment.lifecycle().manage(apnFallbackManager);
+environment.lifecycle().manage(pubSubManager);
+environment.lifecycle().manage(pushSender);
+environment.lifecycle().manage(messagesCache);
+// environment.lifecycle().manage(accountDatabaseCrawler);
+
+...
+```
 
 Q: I got an error from updating profile name.
 
