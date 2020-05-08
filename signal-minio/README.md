@@ -258,7 +258,24 @@ buildConfigField "String", "SIGNAL_CDN_URL", "\"https://domain.com/change-to-you
 ```
 
 
-There’s a report that minio with bucket that has ‘public’ as policy causing the files to be accessible from internet without authentication needed. If you want the bucket not to be accessed from public, you can modify your docker-compose for minio and remove this line
+
+Bucket policy 'public' allow read & write from anonymous users without authentication, to disable this, you can modify your docker-compose for minio and modify mc service by changing `public` to `download`. 
 ```
-/usr/bin/mc policy set public s3/name-of-bucket;
+/usr/bin/mc policy set download s3/name-of-bucket;
+```
+
+By modifying your bucket policy to `download` it will enable `read-only` access, anonymous users still able to see the files in your Web GUI. If you do not want the files to be listed publicly, you can disable the web gui by adding `MINIO_BROWSER=off` to the environment of minio service in docker-compose for minio.
+```
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - 9000:9000
+    environment:
+      - MINIO_ACCESS_KEY=Q3AM3UQ867SPQQA43P2F
+      - MINIO_SECRET_KEY=zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+      - MINIO_REGION=us-east-1
+      - MINIO_DOMAIN=localhost
+      - MINIO_BROWSER=off
 ```
