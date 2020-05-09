@@ -79,11 +79,6 @@ environment.lifecycle().manage(messagesCache);
 ...
 ```
 
-Q: I got an error from updating profile name.
+Q: I got an error from updating profile name / avatar.
 
-A: Some people reported that the url return 400 or 404, we suspect this has to do with Nginx URL Decoding. When a url contains "%2F" it is translated to "/" thus causing the error. Adding `$uri` to `proxy_pass` url can prevent this.
-
-```
-location / {
-		proxy_pass http://127.0.0.1:8080$uri;
-```
+A: Some error presumebly caused by constant change in client or server, starting fresh by reseting database & storage usually stopped this. Some people reported that modifying nginx configuration by adding `$uri` to the end of `proxy_pass`, but unfortunately I can't reproduce the desired result.
