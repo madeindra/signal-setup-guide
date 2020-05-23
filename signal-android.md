@@ -54,27 +54,25 @@ defaultConfig {
 ...
 ```
 
-3. update `UNIDENTIFIED_SENDER_TRUST_ROOT` (value is Public Key from when creating UnidentifiedDelivery of server’s config.yml)
+5. update `UNIDENTIFIED_SENDER_TRUST_ROOT` (value is Public Key from when creating UnidentifiedDelivery of server’s config.yml)
 
 
-4. Comment out `distributionSha256Sum` on `gradle/wrapper/gradle-wrapper.properties`
-```
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-#distributionSha256Sum=027fdd265d277bae65a0d349b6b8da02135b0b8e14ba891e26281fa877fe37a2
-distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.2-all.zip
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
+6. Comment out `distributionSha256Sum` on `gradle/wrapper/gradle-wrapper.properties`
+    ```
+    distributionBase=GRADLE_USER_HOME
+    distributionPath=wrapper/dists
+    # distributionSha256Sum=027fdd265d277bae65a0d349b6b8da02135b0b8e14ba891e26281fa877fe37a2
+    distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.2-all.zip
+    zipStoreBase=GRADLE_USER_HOME
+    zipStorePath=wrapper/dists
+    ```
+7. Download `google-service.json` from Firebase, put it inside `app/`.
 
-```
+8. Update `app/src/main/res/values/firebase_messaging.xml` according to value from `google-service.json`
 
-5. Download `google-service.json` from Firebase, put it inside `app/`.
+9. Update `ATTACHMENT_DOWNLOAD_PATH` and `ATTACHMENT_UPLOAD_PATH` in `libsignal/service/src/main/java/org/whispersystems/signalservice/internal/push/PushServiceSocket.java` by deleting ‘attachments/‘ so attachment will be uploaded in root ( / ). 
 
-6. Update `app/src/main/res/values/firebase_messaging.xml` according to value from `google-service.json`
-
-7. Update `ATTACHMENT_DOWNLOAD_PATH` and `ATTACHMENT_UPLOAD_PATH` in `libsignal/service/src/main/java/org/whispersystems/signalservice/internal/push/PushServiceSocket.java` by deleting ‘attachments/‘ so attachment will be uploaded in root ( / ). 
-
-8. Sync your project then build.
+10. Sync your project then build.
 
 ## Custom Server
 Change `app/build.gradle` to use your server. Always use https and without trailing slash on the url.
