@@ -61,5 +61,8 @@ You are welcome to contribute on this guide. If you have any questions please wr
 ## Donating
 You can donate to me if you think this guide has helped you, your donation will greatly appreciated.
 
-Bitcoin (BTC): <a href = "bitcoin:1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE">1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE</a>
+Bitcoin (BTC):
 
+![1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE](https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/btc-address.gif)
+
+<a href = "bitcoin:1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE">1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE</a>
