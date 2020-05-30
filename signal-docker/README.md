@@ -8,7 +8,7 @@ This is useful for local development and CI , you have 1 master, 1 slave and 1 s
 ## How to start
 
 ```
-> ./start.sh`
+> ./start.sh
 ```
 
 If you see the console output as follows, you have set up the sentinel!
