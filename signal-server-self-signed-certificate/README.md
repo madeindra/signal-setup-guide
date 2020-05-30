@@ -24,7 +24,7 @@ Generate Your Certificate Signing Request
 openssl req -new -key localhost.key -out localhost.csr
 ```
 
-Create `localhost.ext`
+Create a file named `localhost.ext` and add these lines to the file
 ```
 authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE
