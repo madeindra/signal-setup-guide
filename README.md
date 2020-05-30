@@ -47,6 +47,10 @@ Q: Can I use Signal in localhost / internal IP / self-signed certificate (by tru
 
 A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/madecanggih/Setup-Guide/tree/master/signal-server-self-signed-certificate">Signal Server Self Signed Certificate</a>.
 
+Q: Can I remove Google Mobile Service (GMS) from Signal?
+
+A: Yes! A Signal user named "tx-hw" did it on their <a href="https://github.com/tw-hx/Signal-Android/tree/4.60.5.0-FOSS">Github Fork of Signal-Android</a>. You can read more about it on their <a href="https://community.signalusers.org/t/ive-removed-gms-from-the-signal-website-build-its-now-completely-open-source/14382">Signal Community Post</a>
+
 ## ToDos
 
 * CDS Server: Find server with Intel SGX to try to setup custom CDS Server.
