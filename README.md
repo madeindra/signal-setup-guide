@@ -32,20 +32,20 @@ A: Probably caused by keystore haven't contain your SSL certificate / certificat
 
 Q: How to setup Turn Server? I can't do voice/video call.
 
-A: Probably related to your port, either it is not allowed by the firewall or it is not properly set. See my example config on <a href="https://github.com/indrawp/Signal-Guide/tree/master/coturn-server">Coturn Server<a/>
+A: Probably related to your port, either it is not allowed by the firewall or it is not properly set. See my example config on <a href="https://github.com/madecanggih/Setup-Guide/tree/master/coturn-server">Coturn Server<a/>
 
 Q: Can I subtitute AWS to MinIO?
 
-A: I tried it here <a href="https://github.com/indrawp/Signal-Guide/tree/master/signal-minio">signal-minio</a> using modification created by <a href="https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18">kondal789rao
+A: I tried it here <a href="https://github.com/madecanggih/Setup-Guide/tree/master/signal-minio">signal-minio</a> using modification created by <a href="https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18">kondal789rao
 </a>. Someone also did a pull request here: <a href="https://github.com/signalapp/Signal-Server/pull/76">Use MinIO instead of the AWS</a>. Also you can try to look into <a href="https://github.com/localstack/localstack">Localstack</a> for local development.
 
 Q: Can I disable / change Twilio? (by getting the generated OTP on the server)
 
-A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on <a href="https://github.com/indrawp/Signal-Guide/tree/master/signal-server-no-twilio">Signal Server Without Twilio</a>.
+A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on <a href="https://github.com/madecanggih/Setup-Guide/tree/master/signal-server-no-twilio">Signal Server Without Twilio</a>.
 
 Q: Can I use Signal in localhost / internal IP / self-signed certificate (by trusting all certificate)
 
-A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/indrawp/Signal-Guide/tree/master/signal-server-self-signed-certificate">Signal Server Self Signed Certificate</a>.
+A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/madecanggih/Setup-Guide/tree/master/signal-server-self-signed-certificate">Signal Server Self Signed Certificate</a>.
 
 ## ToDos
 
@@ -62,3 +62,4 @@ You are welcome to contribute on this guide. If you have any questions please wr
 You can donate to me if you think this guide has helped you, your donation will greatly appreciated.
 
 Bitcoin (BTC): <a href = "bitcoin:1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE">1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE</a>
+
