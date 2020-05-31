@@ -45,7 +45,7 @@ java -jar service/target/TextSecureServer-2.92.jar server service/config/config.
 
 7. To run the server in the background (run continously), use nohup
 ```
-nohup java -jar service/target/TextSecureServer-2.92.jar server service/config/signal.yml > /dev/null &
+nohup java -jar service/target/TextSecureServer-2.92.jar server service/config/config.yml > /dev/null &
 ```
 
 
