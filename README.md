@@ -67,10 +67,10 @@ You can donate to me if you think this guide has helped you, your donation will 
 
 Bitcoin (BTC):
 
-![1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE](https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/btc-address.gif)
+![1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE](https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/.resources/btc-address.gif)
 
 <a href = "bitcoin:1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE">1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE</a>
 
 GoPay (IDR):
 
-<img src="https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/gp-address.jpeg" width="132" />
+<img src="https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/.resources/gp-address.jpeg" width="132" />
