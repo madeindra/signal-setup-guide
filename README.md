@@ -72,4 +72,5 @@ Bitcoin (BTC):
 <a href = "bitcoin:1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE">1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE</a>
 
 GoPay (IDR):
-![GoPay QR Code](https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/gp-address.jpeg)
+
+<img src="https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/gp-address.jpeg" width="132" />
