@@ -70,7 +70,7 @@ defaultConfig {
 
 8. Update `app/src/main/res/values/firebase_messaging.xml` according to value from `google-service.json`
 
-9. Update `ATTACHMENT_DOWNLOAD_PATH` and `ATTACHMENT_UPLOAD_PATH` in `libsignal/service/src/main/java/org/whispersystems/signalservice/internal/push/PushServiceSocket.java` by deleting ‘attachments/‘ so attachment will be uploaded in root ( / ). 
+9. Update `ATTACHMENT_DOWNLOAD_PATH` and `ATTACHMENT_UPLOAD_PATH` in `libsignal/service/src/main/java/org/whispersystems/signalservice/internal/push/PushServiceSocket.java` by deleting ‘attachments/‘ so attachment will be uploaded in root ( / ). If you don't want the attachments to be uploaded to root bucket, check the FAQ part of this guide.
 
 10. Sync your project then build.
 
@@ -234,3 +234,29 @@ file="src/main/java/com/company/chatname/contacts/ContactSelectionListAdapter.ja
 Q: Why did I need to change the Attachment Path?
 
 A: For now, I have no idea why you can't upload to a path except root, I've tried modifying every permission in AWS but to no avail. 
+
+Q: What can I do so the attachments not uploaded to root bucket?
+
+A: You still need to do `Step 9`, but only remove the `attachments` part from `ATTACHMENT_UPLOAD_PATH`. Then modify your Signal-Server.
+
+First open `AttachmentControllerV2.java` located in `service/src/main/java/org/whispersystems/textsecuregcm/controllers/` and find this line:
+```
+String  objectName  = String.valueOf(attachmentId);
+```
+
+Modify it to:
+```
+String  objectName  = "attachments/" + String.valueOf(attachmentId);
+```
+
+Then open `AttachmentControllerTest.java` located in `service/src/test/java/org/whispersystems/textsecuregcm/tests/controllers/` and find this line:
+```
+assertThat(descriptor.getKey()).isEqualTo(descriptor.getAttachmentIdString());
+```
+
+Modify it to:
+```
+assertThat(descriptor.getKey()).isEqualTo("attachments/" + descriptor.getAttachmentIdString());
+```
+
+Then re-build the server and run it.
