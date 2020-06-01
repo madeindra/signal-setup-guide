@@ -7,7 +7,6 @@ twilio: # Twilio gateway configuration
   numbers:
     - "+15005550006" # Change this to your number from Twilio
     - "+15005550006" # You can use one or more numbers
-  messagingServicesId: "MGXXX" # Change this to Messaging Services ID from Twilio
 
 backupService:
   userAuthenticationTokenSharedSecret: bd5ee839bfa83dc1f60af05d7dbae329 # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
