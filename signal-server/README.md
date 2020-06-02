@@ -94,7 +94,14 @@ sudo nginx -s reload
 certbot --nginx -d domain.com -d www.domain.com
 ``` 
 
-8. When asked `Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.` You are recommended to choose `2: Redirect`. After the process is done your certificate will be located in `/etc/letsencrypt/live/domain.com`. 
+8. When asked `Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.` You are recommended to choose `2: Redirect`. After the process is done your certificate will be located in
+```
+etc
+└── letsencrypt
+    └── live 
+        └── domain.com
+            └── *.pem
+```
 
 9. Update your nginx config to suits your need, you can take a look at the <a href="https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf">example here</a>.
 

@@ -195,11 +195,20 @@ ndk-build
 If the command is not recognized, it means your NDK installation has not been added to Environment Variable, then run it with absolute path.
 
 8. It will generate 4 `libnative-utils.so` inside `app/jni`. Use it to replace the originals that located in here:
-
-* `app/src/main/jniLibs/arm64-v8a/libnative-utils.so`
-* `app/src/main/jniLibs/armeabi-v7a/libnative-utils.so`
-* `app/src/main/jniLibs/x86/libnative-utils.so`
-* `app/src/main/jniLibs/x86_64/libnative-utils.so`
+```
+app
+└── src
+    └── main
+        └── jniLibs
+            ├── arm64-v8a
+            │   └── libnative-utils.so
+            ├── armeabi-v7a
+            │   └── libnative-utils.so
+            ├── x86
+            │   └── libnative-utils.so
+            └── x86_64
+                └── libnative-utils.so
+```
 
 9. Update the package name that formated as `org/thoughtcrime/securesms` and replace with your package name, **remember to use slash (/) like how it is before**. It is located on: 
 
