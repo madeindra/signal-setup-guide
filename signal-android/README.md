@@ -9,12 +9,12 @@ This guide is written by using Signal-Android branch Master version 4.53.6
 * NDK (Optional, only if you want to make custom package)
 
 ## How to
-1. Convert your server ssl cert to pkcs#12 
+1. Convert your server ssl cert to pkcs#12. Change the `-in` and `-inkey` argument to your public and private key. If you generate using Let's Encrypt, the public key is the `fullchain.pem` and the private key is the `privkey.pem`
 ```
-openssl pkcs12 -export -out keystore.pkcs12 -in fullchain.pem -inkey privkey.pem
+openssl pkcs12 -export -out keystore.pkcs12 -in public_key_or_certificate -inkey private_key
 ```
 
-2. Use 'Keystore Explorer’ (MacOS software, you can try using another software), edit `whisper.store` files (the password is "whisper" without quote), insert your pk12 certificate there. If you use AWS CDN Cloudfront, you also need to put Cloudfront's certificate there
+2. Use 'Keystore Explorer’ (In MacOS, you can try using another software in other OS), edit `whisper.store` files (the password is "whisper" without quote), insert your pk12 certificate there. If you use AWS CDN Cloudfront, you also need to put Cloudfront's certificate there
 
 3. Open the project in Android Studio (Open, not Import).
 
