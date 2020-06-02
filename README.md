@@ -70,7 +70,3 @@ Bitcoin (BTC):
 ![1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE](https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/.resources/btc-address.gif)
 
 <a href = "bitcoin:1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE">1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE</a>
-
-GoPay (IDR):
-
-<img src="https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/.resources/gp-address.jpeg" width="132" />
