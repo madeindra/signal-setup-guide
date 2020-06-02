@@ -18,7 +18,7 @@ openssl pkcs12 -export -out keystore.pkcs12 -in public_key_or_certificate -inkey
 
 3. Open the project in Android Studio (Open, not Import).
 
-4. Update URL with own server in `app/build.gradle` (be sure to use https and don't include trailing slash).
+4. Update URL with own server in `app/build.gradle` (be sure to use https and don't include trailing slash). If you are having a hard time finding your `Cloudfront domain`, you can find it in <a href="https://console.aws.amazon.com/cloudfront/">CloudFront console</a> formated as `random-id.cloudfront.net`.
 ```
 ...
 
