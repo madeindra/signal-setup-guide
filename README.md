@@ -59,8 +59,9 @@ A: Yes! A Signal user named "tx-hw" did it on their <a href="https://github.com/
 * **Lately there's a lot of news about leaking in Intel SGX, I think Signal will stop using this method in near future, not to mention that it's not required if you have no concern about contact's privacy**
 
 ## Cotributing
-You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help. If you have any suggestion you can
-<a href = "mailto:indrawp@protonmail.com">reach me via email</a>.
+You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help.
+
+You are recommended to <a href="https://github.com/madecanggih/Setup-Guide/issues/new/choose">open an issue here</a> if you face a difficulties to let the communities help you too and contributing to the communities in the process.
 
 ## Donating
 You can donate to me if you think this guide has helped you, your donation will greatly appreciated.
