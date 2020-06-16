@@ -68,6 +68,6 @@ You can donate to me if you think this guide has helped you, your donation will 
 
 Bitcoin (BTC):
 
-![1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE](https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/.resources/btc-address.gif)
+<img src="https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/.resources/btc-address.png" alt="16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2" width="150">
 
-<a href = "bitcoin:1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE">1CVAHssP53T6Uqd5Raca1GZLynnaGPP4cE</a>
+<a href = "bitcoin:16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2">16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2</a>
