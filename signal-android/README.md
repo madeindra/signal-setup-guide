@@ -240,9 +240,21 @@ file="src/main/java/com/company/chatname/contacts/ContactSelectionListAdapter.ja
 `app/src/main/res/values/strings.xml`
 
 ## FAQ
+Q: How do i build an APK?
+
+A: You can just run `./gradlew clean assemblePlayRelease --exclude-task signProductionPlayRelease`. For more detailed instruction, follow <a href="https://github.com/signalapp/Signal-Android/blob/master/ReproducibleBuilds.md">Official Signal Android ReproducibleBuild Guide</a>.
+
 Q: Why did I need to change the Attachment Path?
 
 A: For now, I have no idea why you can't upload to a path except root, I've tried modifying every permission in AWS but to no avail. 
+
+Q: How did I make Maps works?
+
+A: On Android, search for `com.google.android.geo.API_KEY` and change the value below that line with your own Google Maps API Key.
+
+Q: How did I make Giphy/Sticker works?
+
+A: For now, sticker file is not available publicly. Also, Giphy need content proxy to works, for now the content proxy source code is still not being shared publicly.
 
 Q: What can I do so the attachments not uploaded to root bucket?
 
