@@ -84,7 +84,7 @@ yarn start
 
 4. Update `js/modules/web_api.js`, find functions called `getAttachment` and `putAttachment`, then replace `${cdnUrl}/attachments/${id}` with `${cdnUrl}/` **(Do this if you do the same in android client)**.
 
-5. Still on the same functions, set a default value for `certificateAuthority` variable (see below) **new line in your certificateAuthority needs to be formatted to “\n”**.
+5. Still on the same functions, set a default value for `certificateAuthority` variable using your Certificate Authority (see below), **remember new line in your certificateAuthority needs to be formatted to “\n”**.
 
 **change this**
 ```
@@ -112,4 +112,11 @@ certificateAuthority: "-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE-----
 ## FAQ
 Q: How could I get certificate authority?
 
-A: I called it the certificate of the certificate issuer. You can try browsing a https web using chrome, click on lock pad beside the URL address bar, then click on "Certificate (Valid)", you will see the top most & orange certificate, that is what you need, drag it to your desktop to save it.
+A: I called it the certificate of the certificate issuer. You can try browsing a https web using chrome, click on lock pad beside the URL address bar, then click on "Certificate (Valid)", you will see the top most & orange certificate, that is what you need, drag it to your desktop to save it. 
+
+Q: Certificate Authority from browser is not in readable format, what should i do?
+
+A: If you got .cer format, then convert your certificate from DER to PEM by running this command. After this, you can open your pem certificate in any editor.
+```
+openssl x509 -inform der -in certificate_name.cer -out certificate_name.pem 
+```
