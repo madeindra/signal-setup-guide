@@ -3,7 +3,7 @@ name: Issue report
 about: Create a issue regarding the guide
 title: Write your issue's title here
 labels: help wanted
-assignees: madecanggih
+assignees: madeindra
 
 ---
 
