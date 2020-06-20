@@ -115,6 +115,10 @@ Q: I already have node but the version is not 12.4.0
 
 A: You can run `nvm use 12.4.0` to use the node 12.4.0 on the project.
 
+Q: How to create installation package?
+
+A: After running `yarn build` the package will be listed on `release` directory.
+
 Q: I did a change to the assets but the change did not reflect, why?
 
 A: You can run `yarn grunt dev` first.
