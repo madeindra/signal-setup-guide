@@ -10,16 +10,18 @@ On this repository, you will find guides about Signal Setup that might help peop
 
 ## Content
 What's proven works
-* Signal Server
-* Signal Android
-* Signal Desktop
-* Signal Dependency on Docker (PostgreSQL & Redis)
-* Turn Server (CoTurn)
-* Nginx Server (Port Forwarding HTTPS to Signal Server Port)
+* [Signal Server](./signal-server/)
+* [Signal Android](./signal-android/)
+* [Signal Desktop](./signal-desktop/)
+* [Postgres & Redis for Signal Dependency on Docker](./signal-docker/)
+* [Turn Server with CoTurn](./coturn-server/)
+* [Nginx for Port Forwarding](./signal-server/example-nginx.conf)
+* [Signal with AWS S3 CDN & SQS](./signal-server-aws-setup/)
+* [Signal with MinIO CDN](./signal-minio/)
 
 What's not proven work
-* Contact Discovery Service (CDS), you still can use your signal server without CDS.
-* Signal IOS, at the moment, I don't have Apple Developer license, so I won't be able to help anything regarding Signal iOS.
+* [Contact Discovery Service (CDS)](./signal-server/example-cds.yml), you still can use your signal server without CDS.
+* [Signal IOS](./signal-ios/), still on-going.
 
 ## FAQ
 Q: Will I be able to do ... with Signal?
@@ -32,26 +34,26 @@ A: Probably caused by keystore haven't contain your SSL certificate / certificat
 
 Q: How to setup Turn Server? I can't do voice/video call.
 
-A: Probably related to your port, either it is not allowed by the firewall or it is not properly set. See my example config on <a href="https://github.com/madecanggih/Setup-Guide/tree/master/coturn-server">Coturn Server<a/>
+A: Probably related to your port, either it is not allowed by the firewall or it is not properly set. See my example config on [Coturn Server](./coturn-server/example-turnserver.conf)
 
 Q: Can I subtitute AWS to MinIO?
 
-A: I tried it here <a href="https://github.com/madecanggih/Setup-Guide/tree/master/signal-minio">signal-minio</a> using modification created by <a href="https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18">kondal789rao
+A: I tried it here [signal-minio](./signal-minio/) using modification created by <a href="https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18">kondal789rao
 </a>. Someone also did a pull request here: <a href="https://github.com/signalapp/Signal-Server/pull/76">Use MinIO instead of the AWS</a>. Also you can try to look into <a href="https://github.com/localstack/localstack">Localstack</a> for local development.
 
 Q: Can I disable / change Twilio? (by getting the generated OTP on the server)
 
-A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on <a href="https://github.com/madecanggih/Setup-Guide/tree/master/signal-server-no-twilio">Signal Server Without Twilio</a>.
+A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on [Signal Server Without Twilio](./signal-server-no-twilio/).
 
 Q: Can I use Signal in localhost / internal IP / self-signed certificate (by trusting all certificate)
 
-A: Yes, it is possible but it is not secure, see example on <a href="https://github.com/madecanggih/Setup-Guide/tree/master/signal-server-self-signed-certificate">Signal Server Self Signed Certificate</a>.
+A: Yes, it is possible but it is not secure, see example on [Signal Server Self Signed Certificate](./signal-server-self-signed-certificate/).
 
 Q: Can I remove Google Mobile Service (GMS) from Signal?
 
 A: Yes! A Signal user named "tx-hw" did it on their <a href="https://github.com/tw-hx/Signal-Android/tree/4.60.5.0-FOSS">Github Fork of Signal-Android</a>. You can read more about it on their <a href="https://community.signalusers.org/t/ive-removed-gms-from-the-signal-website-build-its-now-completely-open-source/14382">Signal Community Post</a>
 
-## ToDos
+## To-Dos
 
 * CDS Server: Find server with Intel SGX to try to setup custom CDS Server.
 * Signal iOS: Still can't afford Apple Dev License, find someone with license.
@@ -61,13 +63,13 @@ A: Yes! A Signal user named "tx-hw" did it on their <a href="https://github.com/
 ## Cotributing
 You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help.
 
-You are recommended to <a href="https://github.com/madecanggih/Setup-Guide/issues/new/choose">open an issue here</a> if you face a difficulties to let the communities help you too and contributing to the communities in the process.
+You are recommended to <a href="https://github.com/madeindra/setup-guide/issues/new/choose">open an issue here</a> if you face a difficulties to let the communities help you too and contributing to the communities in the process.
 
 ## Donating
 You can donate to me if you think this guide has helped you, your donation will greatly appreciated.
 
 Bitcoin (BTC):
 
-<img src="https://raw.githubusercontent.com/madecanggih/Setup-Guide/master/.resources/btc-address.png" alt="16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2" width="150">
+<img src="https://raw.githubusercontent.com/madeindra/setup-guide/master/.resources/btc-address.png" alt="16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2" width="150">
 
 <a href = "bitcoin:16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2">16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2</a>

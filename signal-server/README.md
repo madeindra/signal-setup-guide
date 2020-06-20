@@ -9,7 +9,7 @@ This guide is written by using Signal v2.92.
 * Twilio
 * AWS
 
-1. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at the <a href="https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-signal.yml">example here</a>.
+1. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at [the example here](./example-signal.yml).
 
 2.	Build the server (I suggest you keep the DskipTests if you do a modification)
 ```
@@ -50,7 +50,7 @@ nohup java -jar service/target/TextSecureServer-2.92.jar server service/config/c
 
 ## Configuring Nginx & Generating SSL Certificate with Let's Encrypt
 
-If you already has your SSL Certificate, you can use <a href="https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf">the example nginx config</a> on the `Step 4` and skip the `Step 6 - 9`.
+If you already has your SSL Certificate, you can use [the example nginx config](./example-nginx.conf) on the `Step 4` and skip the `Step 6 - 9`.
 
 1. Install nginx on your system
 ```
@@ -103,9 +103,9 @@ etc
             └── *.pem
 ```
 
-9. Update your nginx config to suits your need, you can take a look at the <a href="https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf">example here</a>.
+9. Update your nginx config to suits your need, you can take a look at [the example here](./example-nginx.conf).
 
-10. Check if your configuration is correct
+10.  Check if your configuration is correct
 ```
 sudo nginx -t
 ```
