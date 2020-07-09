@@ -23,6 +23,9 @@ What's not proven work
 * [Contact Discovery Service (CDS)](./signal-server/example-cds.yml), you still can use your signal server without CDS.
 * [Signal IOS](./signal-ios/), still on-going.
 
+## Updating
+If you have do some modification to your code and want to get update from the official git repo, you can follow [UPDATING](./UPDATING.md)
+
 ## FAQ
 Q: Will I be able to do ... with Signal?
 
