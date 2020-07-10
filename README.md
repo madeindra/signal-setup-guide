@@ -26,6 +26,8 @@ What's not proven work
 ## Updating
 If you have do some modification to your code and want to get update from the official git repo, you can follow [UPDATING](./UPDATING.md)
 
+I already completed the configuration for the Signal v3.21, there are some update on the `config.yml` and workaround for configuration, please wait for the updated guide.
+
 ## FAQ
 Q: Will I be able to do ... with Signal?
 
