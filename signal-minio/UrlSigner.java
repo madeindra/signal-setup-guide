@@ -22,7 +22,7 @@ public String getPreSignedUrl(long attachmentId, HttpMethod method) throws Inval
 	    String url = null;
 	    
 	
-	 MinioClient minioClient = new MinioClient("https://localhost:9000", "XXXXX-MINIO-ACCESS_KEY-XXXXXX", "XXXXX-MINIO-ACCESS_SECRET-XXXXXX");
+	 MinioClient minioClient = new MinioClient("http://domain.com:9000", "YOUR-MINIO-ACCESS-KEY", "YOUR-MINIO-ACCESS-SECRET");
 	  
 	    try {
 	    	if(method==HttpMethod.PUT){		    		
