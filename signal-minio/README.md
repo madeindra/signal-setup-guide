@@ -60,7 +60,7 @@ server {
       proxy_set_header Connection "";
       chunked_transfer_encoding off;
 
-      proxy_pass http://localhost:9000/change-to-your-bucket-name;
+      proxy_pass http://127.0.0.1:9000/change-to-your-bucket-name;
     }
 
     location /minio {
@@ -75,7 +75,7 @@ server {
       proxy_set_header Connection "";
       chunked_transfer_encoding off;
 
-      proxy_pass http://localhost:9000;
+      proxy_pass http://127.0.0.1:9000;
     }
 }
 
@@ -92,6 +92,7 @@ server {
     <artifactId>xmlpull</artifactId>
     <version>1.1.3.1</version>
 </dependency>
+
 <dependency>
     <groupId>io.minio</groupId>
     <artifactId>minio</artifactId>
@@ -167,7 +168,7 @@ public ProfileController(RateLimiters rateLimiters,
     
     this.s3client           = AmazonS3ClientBuilder
                         .standard()
-                        .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("https://abc.xxx.com:9000", "us-east-1"))
+                        .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://domain.com:9000", "your-bucket-region"))
                         .withPathStyleAccessEnabled(true)
                         .withClientConfiguration(clientConfiguration)
                         .withCredentials(new AWSStaticCredentialsProvider(credentials))
@@ -206,7 +207,7 @@ public String getPreSignedUrl(long attachmentId, HttpMethod method) throws Inval
 	    String url = null;
 	    
 	
-	 MinioClient minioClient = new MinioClient("https://localhost:9000", "XXXXX-MINIO-ACCESS_KEY-XXXXXX", "XXXXX-MINIO-ACCESS_SECRET-XXXXXX");
+	 MinioClient minioClient = new MinioClient("http://domain.com:9000", "YOUR-MINIO-ACCESS-KEY", "YOUR-MINIO-ACCESS-SECRET");
 	  
 	    try {
 	    	if(method==HttpMethod.PUT){		    		
@@ -264,18 +265,6 @@ Bucket policy 'public' allow read & write from anonymous users without authentic
 /usr/bin/mc policy set download s3/name-of-bucket;
 ```
 
-By modifying your bucket policy to `download` it will enable `read-only` access, anonymous users still able to see the files in your Web GUI. If you do not want the files to be listed publicly, you can disable the web gui by adding `MINIO_BROWSER=off` to the environment of minio service in docker-compose for minio.
-```
-services:
-  minio:
-    image: minio/minio
-    container_name: minio
-    ports:
-      - 9000:9000
-    environment:
-      - MINIO_ACCESS_KEY=Q3AM3UQ867SPQQA43P2F
-      - MINIO_SECRET_KEY=zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
-      - MINIO_REGION=us-east-1
-      - MINIO_DOMAIN=localhost
-      - MINIO_BROWSER=off
-```
+By modifying your bucket policy to `download` it will enable `read-only` access, anonymous users still able to see the files in your Web GUI.
+
+To disable access to minio through web browser, delete `MINIO_BROWSER=off` from the environment in docker-compose for minio.
