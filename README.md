@@ -26,7 +26,15 @@ What's not proven work
 ## Updating
 If you have do some modification to your code and want to get update from the official git repo, you can follow [UPDATING](./UPDATING.md)
 
-I already completed the configuration for the Signal v3.21, there are some update on the `config.yml` and workaround for configuration, please wait for the updated guide.
+I already completed the configuration for the Signal v3.21, there are some update on the `config.yml` and workaround for configuration. 
+
+The way to subtitute AWS with MinIO also slightly changed, but it's not hard to be done.
+
+Android custom build for newer version does not differ from the guide written here, the same might apply to the Desktop and iOS client.
+
+Be aware that the current updated signal server on the signalapp repository seems to be incomplete, there are some API missing, those are API intended for versioned profile. They removed `keys database` usage from the server while the `account database` has some update. They also added `gcp` for attachment v3 and added `zkgroup` dependency.
+
+Please wait for the updated guide for Signal Server v3.xx.
 
 ## FAQ
 Q: Will I be able to do ... with Signal?
