@@ -24,7 +24,7 @@ public ProfileController(RateLimiters rateLimiters,
     
     this.s3client           = AmazonS3ClientBuilder
                         .standard()
-                        .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("https://abc.xxx.com:9000", "us-east-1"))
+                        .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://your-domain.com:9000", "your-bucket-region"))
                         .withPathStyleAccessEnabled(true)
                         .withClientConfiguration(clientConfiguration)
                         .withCredentials(new AWSStaticCredentialsProvider(credentials))
