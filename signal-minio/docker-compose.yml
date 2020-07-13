@@ -11,6 +11,7 @@ services:
       - MINIO_SECRET_KEY=zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
       - MINIO_REGION=us-east-1
       - MINIO_DOMAIN=localhost
+      - MINIO_BROWSER=off
     command: server /export
     volumes:
       - ./config:/root/.minio
