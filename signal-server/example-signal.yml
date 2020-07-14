@@ -1,101 +1,67 @@
-twilio: # Twilio gateway configuration
-  accountId:    loremipsum # Change this to your account id
-  accountToken: loremipsum # Change this to your token
-  localDomain:  signal.domain.com # Change this to your domain
-  numbers:
-    - "+15005550006" # Change this to your number from Twilio
-    - "+15005550006" # You can use one or more numbers
+server: # Server configuration
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
 
 backupService:
-  userAuthenticationTokenSharedSecret: bd5ee839bfa83dc1f60af05d7dbae329 # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
+  userAuthenticationTokenSharedSecret: XXXXXXXXXXXXXXX # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
 
 storageService:
-  userAuthenticationTokenSharedSecret: cffe9b783677f8ee3dfb485eef024f68 # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
-
-push:
-  queueSize: 200
-
-turn: # Coturn server configuration
-  secret: secret # You will need the same config with the secret in turnserver.conf
-  uris:
-    - stun:signal.domain.com:3478 # If you change the port in turnserver.conf, change this too
-    - stun:signal.domain.com:5349 # If you change the port in turnserver.conf, change this too
-    - turn:signal.domain.com:5349?transport=udp # If you change the port in turnserver.conf, change this too
-    - turn:signal.domain.com:3478?transport=udp # If you change the port in turnserver.conf, change this too
+  userAuthenticationTokenSharedSecret: XXXXXXXXXXXXXXX # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
 
 cache: # Redis server configuration for cache cluster
   url: redis://127.0.0.1:6379/cache
   replicaUrls:
-    -  redis://127.0.0.1:6379/cacheReplica
+    -  redis://127.0.0.1:6380/cacheReplica
 
 directory:
   redis: # Redis server configuration for directory cluster
     url: redis://127.0.0.1:6379/directory
     replicaUrls:
-      -  redis://127.0.0.1:6379/directoryReplica
+      -  redis://127.0.0.1:6380/directoryReplica
   client: # Configuration for interfacing with Contact Discovery Service cluster
-    userAuthenticationTokenSharedSecret: ad2e341ca076657e34e4e29e3bfa6a86 # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
-    userAuthenticationTokenUserIdSecret: e9c3ed33d99073f48c7acc015f9821e6 # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
+    userAuthenticationTokenSharedSecret: XXXXXXXXXXXXXXX # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
+    userAuthenticationTokenUserIdSecret: XXXXXXXXXXXXXXX # Generate it with `head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'`
   sqs:
-    accessKey:    LOREMIPSUM # Change this to your AWS IAM Access Key
-    accessSecret: loremipsumdolorsitamet # Change this to your AWS IAM Secret
-    queueUrl:     https://sqs.ap-southeast-1.amazonaws.com/637423488741/chatqueue.fifo # Change this to your AWS SQS (FIFO) URL
+    accessKey:    XXXXXXXXXXXXXXX # Change this to your AWS IAM Access Key
+    accessSecret: XXXXXXXXXXXXXXX # Change this to your AWS IAM Secret
+    queueUrl:     https://sqs.XXXXXXXXX.amazonaws.com/XXXXXXXXX/XXXXXXXXX.fifo # Change this to your AWS SQS (FIFO) URL
   server: # You can change the certificate with your own certificate
     replicationUrl: http://127.0.0.1:9090 # CDS replication endpoint base url
-    replicationPassword: mypassword # CDS replication endpoint password
+    replicationPassword: XXXXXXXXXXXXXXX # CDS replication endpoint password
     replicationCaCertificate: |
       -----BEGIN CERTIFICATE-----
-      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
+      fill this with your ca certificate
       -----END CERTIFICATE-----
 
 messageCache: # Redis server configuration for message store cache
   redis:
     url: redis://127.0.0.1:6379/messageCache
     replicaUrls:
-      -  redis://127.0.0.1:6379/messageCacheReplica
+      -  redis://127.0.0.1:6380/messageCacheReplica
+
+pushScheduler:
+  url: redis://127.0.0.1:6379/pushScheduler
+  replicaUrls:
+    - redis://127.0.0.1:6380/pushSchedulerReplica
+
+push:
+  queueSize: 200
 
 attachments: # AWS S3 configuration
-  accessKey:    LOREMIPSUM # Change this to your AWS IAM Access Key
-  accessSecret: loremipsumdolorsitamet # Change this to your AWS IAM Secret
-  bucket:       mychatbucket # Change this to your bucket's name
-  region:       ap-southeast-1 # Change this to your bucket's region
+  accessKey:    XXXXXXXXXXXXXXX # Change this to your AWS IAM Access Key
+  accessSecret: xxxxxxxxxxxxxxx # Change this to your AWS IAM Secret
+  bucket:       xxxxxxxxxx # Change this to your bucket's name
+  region:       xx-xxxxxxxxx-x # Change this to your bucket's region
 
 cdn: # AWS S3 configuration
-  accessKey:    LOREMIPSUM # Change this to your AWS IAM Access Key
-  accessSecret: loremipsumdolorsitamet # Change this to your AWS IAM Secret
-  bucket:       mychatbucket # Change this to your bucket's name
-  region:       ap-southeast-1 # Change this to your bucket's region
+  accessKey:    XXXXXXXXXXXXXXX # Change this to your AWS IAM Access Key
+  accessSecret: xxxxxxxxxxxxxxx # Change this to your AWS IAM Secret
+  bucket:       xxxxxxxxxx # Change this to your bucket's name
+  region:       xx-xxxxxxxxx-x # Change this to your bucket's region
 
 accountsDatabase:
   driverClass: org.postgresql.Driver
@@ -121,16 +87,13 @@ abuseDatabase:
   password:    postgres
   url:         jdbc:postgresql://127.0.0.1:5434/signal
 
-gcm:
-  senderId: 874271879526 # Change this to your FCM Sender ID
-  apiKey: AAAAy46qMWY:APA91bEe3gCLQIXRAXs8L6YITyt_2AP-d3k96s6j7-BQOqdvt03uad0fUivTZnvIMHWNrmRsnVFibjCB7QzlJ5iVKk9mQ9S_INx6MY4DxEnpz9SIcGOeaEnN09OV3tx6F9ZDMLRWfakB # Change this to your FCM API Key
-
-recaptcha:
-  secret: 6Leiu84UAAAAAOBjJpJyDsjf-2DaxhmLTl2Mn-ek # Change this to your Google Recaptcha secret
-
 accountDatabaseCrawler:
   chunkSize:       1000
   chunkIntervalMs: 1000000
+
+gcm:
+  senderId: 0000000000 # Change this to your FCM Sender ID
+  apiKey: XXXXXXXXXXXXXXXX # Change this to your FCM API Key
 
 apn: # You can use these value if you don't need Apple Push Notification
   pushCertificate: "-----BEGIN CERTIFICATE-----\r\nMIIFjzCCBHegAwIBAgIIfkSIVVtC9UIwDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV\r\nBAYTAlVTMRMwEQYDVQQKDApBcHBsZSBJbmMuMSwwKgYDVQQLDCNBcHBsZSBXb3Js\r\nZHdpZGUgRGV2ZWxvcGVyIFJlbGF0aW9uczFEMEIGA1UEAww7QXBwbGUgV29ybGR3\r\naWRlIERldmVsb3BlciBSZWxhdGlvbnMgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkw\r\nHhcNMTkwNTA5MTc0NzUyWhcNMjAwNTA4MTc0NzUyWjCBjjElMCMGCgmSJomT8ixk\r\nAQEMFWNvbS5xYW5kb3JhcHAucWFuZG9yMzFDMEEGA1UEAww6QXBwbGUgRGV2ZWxv\r\ncG1lbnQgSU9TIFB1c2ggU2VydmljZXM6IGNvbS5xYW5kb3JhcHAucWFuZG9yMzET\r\nMBEGA1UECwwKTlA2UE5GUUdBODELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEB\r\nAQUAA4IBDwAwggEKAoIBAQDIo+8GD6chbxCFDI7bTK6iTxQHnD/FiXJvEYBbO3ey\r\nQV8/XZm66VbO+RbA4UArA2bjdW5KZkSQ7hSYJcomQCmcmpqmrXjcaL0KfeWinSz4\r\nmbXxoXK9JsoUSjOfy7yXHGDLZSHGVvn5gO1FU9WPX3Iu7YYMT1hwnMgmZIuzn5K9\r\nAiyxvQzSlIlEsnpoqTDUz+1eXtPXAISPQT8+jM8JoZohTrODuUUj2rSPWi62kMBP\r\nsX4H4ncSjI56DG/E0lvUV7d0PEiUnoxGwzycmGJVgpZqv/E6p1eUNT7Utl4ktuiq\r\nEv8ft3+brJx+FokMi7AKjxLvlYS18LTG6JbQMcmXHsdlAgMBAAGjggHlMIIB4TAJ\r\nBgNVHRMEAjAAMB8GA1UdIwQYMBaAFIgnFwmpthhgi+zruvZHWcVSVKO3MIIBDwYD\r\nVR0gBIIBBjCCAQIwgf8GCSqGSIb3Y2QFATCB8TCBwwYIKwYBBQUHAgIwgbYMgbNS\r\nZWxpYW5jZSBvbiB0aGlzIGNlcnRpZmljYXRlIGJ5IGFueSBwYXJ0eSBhc3N1bWVz\r\nIGFjY2VwdGFuY2Ugb2YgdGhlIHRoZW4gYXBwbGljYWJsZSBzdGFuZGFyZCB0ZXJt\r\ncyBhbmQgY29uZGl0aW9ucyBvZiB1c2UsIGNlcnRpZmljYXRlIHBvbGljeSBhbmQg\r\nY2VydGlmaWNhdGlvbiBwcmFjdGljZSBzdGF0ZW1lbnRzLjApBggrBgEFBQcCARYd\r\naHR0cDovL3d3dy5hcHBsZS5jb20vYXBwbGVjYS8wEwYDVR0lBAwwCgYIKwYBBQUH\r\nAwIwTQYDVR0fBEYwRDBCoECgPoY8aHR0cDovL2RldmVsb3Blci5hcHBsZS5jb20v\r\nY2VydGlmaWNhdGlvbmF1dGhvcml0eS93d2RyY2EuY3JsMB0GA1UdDgQWBBR6BPca\r\ngaRwijNzbL4lcYrJkU2r7TALBgNVHQ8EBAMCB4AwEAYKKoZIhvdjZAYDAQQCBQAw\r\nDQYJKoZIhvcNAQEFBQADggEBAFcIWIc1T0PtgeaMgjwQcTmfJGy8MUdIO/hdElo/\r\nOZF4ts4c2xkddanZ9IzOCj/HzmRJEs6WVZhNxySc3Cxo6KejsLbGLJmMoEh72xyQ\r\nwgnMBiapMnRhCfd68NMnTUClNHvGsg+NipnAN63r+HZSgPsCMXHsEMyZ+qQendRc\r\nDZH6m5FN1TqdAVtChdDPItzYJuQpyeKJpiiQGeCd6YjCELkWVxHcTU67CWmkuVqx\r\n9BRoANbJXty3b9T5KHxJYcEMj3pvsgcTOR/nGKIT9+B2iqrt6i/YY2n4p5NXXFzZ\r\nHewPc93srGXfyrvW7SeQs+93vZ7WlntfihY7WCoUbEOnHso=\r\n-----END CERTIFICATE-----"
@@ -138,25 +101,31 @@ apn: # You can use these value if you don't need Apple Push Notification
   bundleId: com.notused
   sandbox: true
 
+recaptcha:
+  secret: XXXXXXXXXXXXXXXX # Change this to your Google Recaptcha secret
+
+turn: # Coturn server configuration
+  secret: secret # You will need the same config with the secret in turnserver.conf
+  uris:
+    - stun:signal.domain.com:3478 # If you change the port in turnserver.conf, change this too
+    - stun:signal.domain.com:5349 # If you change the port in turnserver.conf, change this too
+    - turn:signal.domain.com:5349?transport=udp # If you change the port in turnserver.conf, change this too
+    - turn:signal.domain.com:3478?transport=udp # If you change the port in turnserver.conf, change this too
+
+twilio: # Twilio gateway configuration
+  accountId:    xxxxxxxxxx # Change this to your account id
+  accountToken: xxxxxxxxxx # Change this to your token
+  localDomain:  signal.domain.com # Change this to your domain
+  numbers:
+    - "+000000000" # Change this to your number from Twilio
+    - "+000000000" # You can use one or more numbers
+
 unidentifiedDelivery:
-  certificate: CiUIARIhBbtuVWHuuuPtttdWYDe27oCiY9WmptlQOex/v7g6MV0kEkCkJgjFrzFQjJhkpylTUi/uuW1ygtIsKi7R2VaUaTC8KnhPHjODAyydqD3noiw0DLRB0vNfpr08h4AQHGCKBkiK # Change this to your generated certificate
-  privateKey: kHuIcZl6Y9MN5rM541Ordh5xRzWI3wXdaP2S8pY3wlI= # Change this to you generated private key
+  certificate: XXXXXXXXXXXXXXXX # Change this to your generated certificate
+  privateKey: XXXXXXXXXXXXXXXX= # Change this to you generated private key
   expiresDays: 365
 
 voiceVerification:
   url: https://server.chatapp.net
   locales:
     - en
-
-pushScheduler:
-  url: redis://127.0.0.1:6379/pushScheduler
-  replicaUrls:
-    - redis://127.0.0.1:6379/pushSchedulerReplica
-
-server:
-  applicationConnectors:
-    - type: http
-      port: 8080
-  adminConnectors:
-    - type: http
-      port: 8081
