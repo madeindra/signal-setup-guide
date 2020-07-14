@@ -2,6 +2,17 @@
 
 This is signal dependencies setup on Docker to make development easier.
 
+| container_name          | image                                 | port | info                                              |
+|-------------------------|---------------------------------------|------|---------------------------------------------------|
+| signal_account_database | postgres:11                           | 5431 |                                                   |
+| signal_keys_database    | postgres:11                           | 5432 |                                                   |
+| signal_message_database | postgres:11                           | 5433 |                                                   |
+| signal_abuse_database   | postgres:11                           | 5434 |                                                   |
+| redis_main              | redis:5                               | 6379 |                                                   |
+| redis_replication       | redis:5                               | 6380 |                                                   |
+| signal_adminer          | adminer:latest                        | 8000 | optional use for database management with web GUI |
+| redis_commander         | rediscommander/redis-commander:latest | 8001 | optional use for cache management with web GUI    |
+
 ## Starting up
 
 ```
