@@ -1,23 +1,11 @@
 # Postgres & Redis on Docker
 
-I add the PostgreSQL to the docker-compose. The Redis on docker-compose is created by [xavierchow](https://github.com/xavierchow/docker-redis-sentinel).
+This is signal dependencies setup on Docker to make development easier.
 
-## How to start
-
-```
-./start.sh
-```
-
-If you see the console output as follows, you have set up the sentinel!
+## Starting up
 
 ```
-docker-compose ps
-     Name                   Command               State                 Ports
---------------------------------------------------------------------------------------------
-redis_master     docker-entrypoint.sh redis ...   Up      0.0.0.0:6379->6379/tcp
-redis_sentinel   sentinel-entrypoint.sh           Up      0.0.0.0:26379->26379/tcp, 6379/tcp
-redis_slave      docker-entrypoint.sh redis ...   Up      6379/tcp, 0.0.0.0:6380->6380/tcp
-
+docker-compose up -d
 ```
 
 ## For macOS users
