@@ -268,3 +268,19 @@ Bucket policy 'public' allow read & write from anonymous users without authentic
 By modifying your bucket policy to `download` it will enable `read-only` access, anonymous users still able to see the files in your Web GUI.
 
 To disable access to minio through web browser, delete `MINIO_BROWSER=off` from the environment in docker-compose for minio.
+
+## Checking MinIO Deployment
+
+To check if there are some error on your MinIO deployment, use `minio.sh` from this repository.
+
+Prepare a file to be uploaded and run this script
+```
+./minio.sh your-bucket-name your-file-to-be-uploaded
+```
+
+If you cannot run the script, please give it an execute permission
+```
+chmod +x ./minio.sh
+```
+
+You will see Success Code `200` if you succeed in uploading the file, if not then there might be some error with your MinIO deployment. s
