@@ -1,5 +1,18 @@
 version: '2.2'
 services:
+  signal_account_database:
+    image:          postgres:11
+    container_name: postgres_account_database
+    restart:        always
+    environment:
+      POSTGRES_USER:     postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB:       signal
+      PGDATA:            /var/lib/postgresql/data/pgdata
+    ports:
+      - '5431:5432'
+    volumes:
+      - ./postgres_database:/var/lib/postgresql/data
   signal_keys_database:
     image:          postgres:11
     container_name: postgres_keys_database
@@ -10,25 +23,12 @@ services:
       POSTGRES_DB:       signal
       PGDATA:            /var/lib/postgresql/data/pgdata
     ports:
-      - '5431:5432'
-    volumes:
-      - ./postgres_keys_database:/var/lib/postgresql/data
-  signal_database:
-    image:          postgres:11
-    container_name: postgres_database
-    restart:        always
-    environment:
-      POSTGRES_USER:     postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
-      PGDATA:            /var/lib/postgresql/data/pgdata
-    ports:
       - '5432:5432'
     volumes:
-      - ./postgres_database:/var/lib/postgresql/data
-  signal_message_store:
+      - ./postgres_keys_database:/var/lib/postgresql/data
+  signal_message_database:
     image:          postgres:11
-    container_name: postgres_message_store
+    container_name: postgres_message_database
     restart:        always
     environment:
       POSTGRES_USER:     postgres
@@ -52,28 +52,47 @@ services:
       - '5434:5432'
     volumes:
       - ./postgres_abuse_database:/var/lib/postgresql/data
-  redis_master:
+  redis_main:
     image: redis:5
     container_name: redis_master
     ports:
       - '6379:6379'
     volumes:
-      - ./redis_master:/data
-  redis_slave:
+      - ./redis_main:/data
+  redis_replication:
     image: redis:5
     container_name: redis_slave
-    command: redis-server --port 6380 --slaveof "${EXTERNAL_HOST}" 6379 --slave-announce-ip "${EXTERNAL_HOST}"
+    command: redis-server --port 6380
     ports:
       - '6380:6380'
     volumes:
-      - ./redis_slave:/data
-  sentinel:
-    build: ./sentinel
-    container_name: redis_sentinel
-    ports:
-      - '26379:26379'
-    environment:
-      - SENTINEL_NAME=mysentinel
-      - HOST_IP="${EXTERNAL_HOST}"
-    volumes:
-      - ./redis_slave:/data
+      - ./redis_replication:/data
+  
+  # Remove linse below if you don't want PostgresDB management GUI
+  signal_adminer:
+    container_name: signal_adminer
+    image:          adminer:latest
+    ports: 
+      - 8000:8080
+    links: 
+      - signal_account_database
+      - signal_keys_database
+      - signal_message_database
+      - signal_abuse_database
+    environment: 
+      ADMINER_DESIGN: nette
+    networks:
+      - default
+      
+  # Remove linse below if you don't want Redis management GUI
+  redis_commander:
+    container_name: redis_commander
+    image:          rediscommander/redis-commander:latest
+    hostname: redis-commander
+    ports: 
+      - 8001:8081
+    links: 
+      - redis_main
+      - redis_replication
+    environment: 
+      - REDIS_HOSTS=main:redis_main:6379, replica:redis_replication:6380
