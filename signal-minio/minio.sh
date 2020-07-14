@@ -24,4 +24,4 @@ curl -v -X PUT -T "${file}" \
           -H "Date: ${date}" \
           -H "Content-Type: ${content_type}" \
           -H "Authorization: AWS ${s3_key}:${signature}" \
-          https://$host${resource}
+          http://$host${resource}
