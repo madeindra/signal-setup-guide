@@ -34,7 +34,7 @@ Android custom build for newer version does not differ from the guide written he
 
 Be aware that the current updated signal server on the signalapp repository seems to be incomplete, there are some API missing, those are API intended for versioned profile. They removed `keys database` usage from the server while the `account database` has some update. They also added `gcp` for attachment v3 and added `zkgroup` dependency.
 
-Please wait for the updated guide for Signal Server v3.xx.
+For the new config.yml example for Signal v3.xx you can see it here [signal 3.xx config](https://gist.github.com/madeindra/c031789f9005f04c56d76df6562bfc7a).
 
 ## FAQ
 Q: Will I be able to do ... with Signal?
