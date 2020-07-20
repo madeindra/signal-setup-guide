@@ -71,10 +71,20 @@ A: Yes! A Signal user named "tx-hw" did it on their <a href="https://github.com/
 * CDS Server: Find server with Intel SGX to try to setup custom CDS Server.
 * Signal iOS: Still can't afford Apple Dev License, find someone with license.
 * Load Test: I want to see the performance of the custom server under stress, will update later.
-* **Lately there's a lot of news about leaking in Intel SGX, I think Signal will stop using this method in near future, not to mention that it's not required if you have no concern about contact's privacy**
 
-## Cotributing
-You are welcome to contribute on this guide. If you have any questions please write an issues and I will try to help.
+## Contributor
+This guide has been written by the help of the developers from community.
+
+* [konglomerat-id](https://github.com/on-premise-signal/signal-setup-guide) wrote the configuration and steps to setup signal server 2.55 
+* [LiteSpeedDev](https://github.com/LiteSpeedDev/SignalApp-Setup) gave nginx configration and turn/stun server 
+* [kondal789rao](https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18) modified AWS to MinIO.
+* [madeindra](https://github.com/madeindra/setup-guide) compiled the guide, improve the steps, and wrote more guide on uncovered topics
+* [amargarido](https://github.com/amargarido) helped to improve the readme
+
+You are welcome to contribute on this guide, please fork the repository and create a Pull Request.
+
+## Issue
+If you have any questions please write an issues and I will try to help.
 
 You are recommended to <a href="https://github.com/madeindra/setup-guide/issues/new/choose">open an issue here</a> if you face a difficulties to let the communities help you too and contributing to the communities in the process.
 
