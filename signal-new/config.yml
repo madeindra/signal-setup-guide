@@ -1,0 +1,145 @@
+twilio: # twilio configuration for sms otp
+  accountId:    xxxxxxxxxx # your account id
+  accountToken: xxxxxxxxxx # your account token
+  localDomain:  domain.com # your domain
+  numbers:
+    - "+000" # your twilio phone numbers 
+
+backupService:
+  userAuthenticationTokenSharedSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+
+storageService:
+  userAuthenticationTokenSharedSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+
+push:
+  queueSize: 200
+
+turn: # turn server configuration for voice & video call
+  secret: xxxxx # your turn server's secret
+  uris: 
+    - stun:domain.com:3478 # change to your turn server domain
+    - stun:domain.com:5349 # change to your turn server domain
+    - turn:domain.com:5349?transport=udp # change to your turn server domain
+    - turn:domain.com:3478?transport=udp # change to your turn server domain
+
+cache: # redis server for cache cluster
+  url: redis://127.0.0.1:6379/cache # change to your redis server
+  replicaUrls:
+    -  redis://127.0.0.1:6379/cacheReplica # change to your redis server
+
+directory:
+  redis: # redis server for directory cluster
+    url: redis://127.0.0.1:6379/directory # change to your redis server
+    replicaUrls:
+      -  redis://127.0.0.1:6379/directoryReplica # change to your redis server
+  client: # for communication with cds
+    userAuthenticationTokenSharedSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+    userAuthenticationTokenUserIdSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+  sqs: # sqs for queueing
+    accessKey:    XXXXXXXXXXXXXXX # your aws iam access key
+    accessSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # your aws iam access secret
+    queueUrl:     https://sqs.xxxxx.amazonaws.com/xxxxxxx/xxxxxx.fifo # your fifo queue url
+  server:
+    replicationUrl: http://127.0.0.1:9090 # cds replication endpoint base url
+    replicationPassword:      mypassword # cds replication endpoint password
+    replicationCaCertificate: |
+      -----BEGIN CERTIFICATE-----
+      ..........................
+      -----END CERTIFICATE-----
+
+messageCache: # redis server for message store cache
+  redis:
+    url: redis://127.0.0.1:6379/messageCache # change to your redis server
+    replicaUrls:
+      -  redis://127.0.0.1:6379/messageCacheReplica # change to your redis server
+
+awsAttachments: # aws s3 configuration
+  accessKey:    XXXXXXXXXXXXXXX # your aws iam access key
+  accessSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # your aws iam access secret
+  bucket:       xxxxx # your s3 bucket name
+  region:       xx-xxxxx-x # your region
+  
+cdn: # aws cdn configuration
+  accessKey:    XXXXXXXXXXXXXXX # your aws iam access key
+  accessSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # your aws iam access secret
+  bucket:       xxxxx # your s3 bucket name
+  region:       xx-xxxxx-x # your region
+
+gcpAttachments: # gcp storage configuration
+  domain: domain.com 
+  email: dummy@dummy.com
+  maxSizeInBytes: 1000000
+  pathPrefix: /
+  rsaSigningKey: "-----BEGIN RSA PRIVATE KEY-----\n ..... \n-----END RSA PRIVATE KEY-----\n"
+
+pubsub: # redis server for pubsub cache
+  url: redis://127.0.0.1:6379/cache # change to your redis server
+  replicaUrls:
+    -  redis://127.0.0.1:6379/cacheReplica # change to your redis server
+
+remoteConfig: # remote configuration token
+  authorizedTokens:
+    - dummy  
+
+zkConfig: # zkgroup config, run using your build jar
+  serverSecret: xxxxxxxxxx # java -jar TextSecure.jar zkparams
+  serverPublic: xxxxxxxxxx # java -jar TextSecure.jar zkparams
+  enabled: true
+
+accountsDatabase: # database for account
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5342/signal
+
+messageStore: # database for message
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5342/signal
+
+abuseDatabase: # database for abuse
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5342/signal
+
+gcm: # firebase messaging
+  senderId: 000000000 # your sender id
+  apiKey: xxxxxxxxxxx # your api key
+
+recaptcha: # google recaptcha v3
+  secret: xxxxxxxxxxx # your recaptcha secret
+
+accountDatabaseCrawler: # crawler for account database
+  chunkSize:       1000
+  chunkIntervalMs: 1000000
+
+apn: # apple push nottification, just use this value if you don't plan to develop signal ios
+  pushCertificate: "-----BEGIN CERTIFICATE-----\r\nMIIFjzCCBHegAwIBAgIIfkSIVVtC9UIwDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV\r\nBAYTAlVTMRMwEQYDVQQKDApBcHBsZSBJbmMuMSwwKgYDVQQLDCNBcHBsZSBXb3Js\r\nZHdpZGUgRGV2ZWxvcGVyIFJlbGF0aW9uczFEMEIGA1UEAww7QXBwbGUgV29ybGR3\r\naWRlIERldmVsb3BlciBSZWxhdGlvbnMgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkw\r\nHhcNMTkwNTA5MTc0NzUyWhcNMjAwNTA4MTc0NzUyWjCBjjElMCMGCgmSJomT8ixk\r\nAQEMFWNvbS5xYW5kb3JhcHAucWFuZG9yMzFDMEEGA1UEAww6QXBwbGUgRGV2ZWxv\r\ncG1lbnQgSU9TIFB1c2ggU2VydmljZXM6IGNvbS5xYW5kb3JhcHAucWFuZG9yMzET\r\nMBEGA1UECwwKTlA2UE5GUUdBODELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEB\r\nAQUAA4IBDwAwggEKAoIBAQDIo+8GD6chbxCFDI7bTK6iTxQHnD/FiXJvEYBbO3ey\r\nQV8/XZm66VbO+RbA4UArA2bjdW5KZkSQ7hSYJcomQCmcmpqmrXjcaL0KfeWinSz4\r\nmbXxoXK9JsoUSjOfy7yXHGDLZSHGVvn5gO1FU9WPX3Iu7YYMT1hwnMgmZIuzn5K9\r\nAiyxvQzSlIlEsnpoqTDUz+1eXtPXAISPQT8+jM8JoZohTrODuUUj2rSPWi62kMBP\r\nsX4H4ncSjI56DG/E0lvUV7d0PEiUnoxGwzycmGJVgpZqv/E6p1eUNT7Utl4ktuiq\r\nEv8ft3+brJx+FokMi7AKjxLvlYS18LTG6JbQMcmXHsdlAgMBAAGjggHlMIIB4TAJ\r\nBgNVHRMEAjAAMB8GA1UdIwQYMBaAFIgnFwmpthhgi+zruvZHWcVSVKO3MIIBDwYD\r\nVR0gBIIBBjCCAQIwgf8GCSqGSIb3Y2QFATCB8TCBwwYIKwYBBQUHAgIwgbYMgbNS\r\nZWxpYW5jZSBvbiB0aGlzIGNlcnRpZmljYXRlIGJ5IGFueSBwYXJ0eSBhc3N1bWVz\r\nIGFjY2VwdGFuY2Ugb2YgdGhlIHRoZW4gYXBwbGljYWJsZSBzdGFuZGFyZCB0ZXJt\r\ncyBhbmQgY29uZGl0aW9ucyBvZiB1c2UsIGNlcnRpZmljYXRlIHBvbGljeSBhbmQg\r\nY2VydGlmaWNhdGlvbiBwcmFjdGljZSBzdGF0ZW1lbnRzLjApBggrBgEFBQcCARYd\r\naHR0cDovL3d3dy5hcHBsZS5jb20vYXBwbGVjYS8wEwYDVR0lBAwwCgYIKwYBBQUH\r\nAwIwTQYDVR0fBEYwRDBCoECgPoY8aHR0cDovL2RldmVsb3Blci5hcHBsZS5jb20v\r\nY2VydGlmaWNhdGlvbmF1dGhvcml0eS93d2RyY2EuY3JsMB0GA1UdDgQWBBR6BPca\r\ngaRwijNzbL4lcYrJkU2r7TALBgNVHQ8EBAMCB4AwEAYKKoZIhvdjZAYDAQQCBQAw\r\nDQYJKoZIhvcNAQEFBQADggEBAFcIWIc1T0PtgeaMgjwQcTmfJGy8MUdIO/hdElo/\r\nOZF4ts4c2xkddanZ9IzOCj/HzmRJEs6WVZhNxySc3Cxo6KejsLbGLJmMoEh72xyQ\r\nwgnMBiapMnRhCfd68NMnTUClNHvGsg+NipnAN63r+HZSgPsCMXHsEMyZ+qQendRc\r\nDZH6m5FN1TqdAVtChdDPItzYJuQpyeKJpiiQGeCd6YjCELkWVxHcTU67CWmkuVqx\r\n9BRoANbJXty3b9T5KHxJYcEMj3pvsgcTOR/nGKIT9+B2iqrt6i/YY2n4p5NXXFzZ\r\nHewPc93srGXfyrvW7SeQs+93vZ7WlntfihY7WCoUbEOnHso=\r\n-----END CERTIFICATE-----"
+  pushKey: "-----BEGIN RSA PRIVATE KEY-----\r\nMIIEpQIBAAKCAQEAyKPvBg+nIW8QhQyO20yuok8UB5w/xYlybxGAWzt3skFfP12Z\r\nuulWzvkWwOFAKwNm43VuSmZEkO4UmCXKJkApnJqapq143Gi9Cn3lop0s+Jm18aFy\r\nvSbKFEozn8u8lxxgy2Uhxlb5+YDtRVPVj19yLu2GDE9YcJzIJmSLs5+SvQIssb0M\r\n0pSJRLJ6aKkw1M/tXl7T1wCEj0E/PozPCaGaIU6zg7lFI9q0j1outpDAT7F+B+J3\r\nEoyOegxvxNJb1Fe3dDxIlJ6MRsM8nJhiVYKWar/xOqdXlDU+1LZeJLboqhL/H7d/\r\nm6ycfhaJDIuwCo8S75WEtfC0xuiW0DHJlx7HZQIDAQABAoIBAFNo+1xMs5FNp9N4\r\nBgebGFp3f38ucMCBRGZyIydKUJd1X9Bq7BbtHF6M5O2odtGq52IWFpStcUHDCCK8\r\nSw6dy+7DwxkZss4GaNhswENbDjAHTsE1+goyjv3iXxXGUA+OB5tm3qSi0ebstzcE\r\nBBtHdaOWsQx7C+w88WQslntFEm6qNSqeM1s5eQ20wSnlAA43Pm+NdVNM+JYX4iqt\r\n/MFdaPINE5XAXyBRAYir0l1dkofeGsb4rCuZmXSmjRRcC9vdhzmjrDUxLspOI7du\r\nUT7vYy3/hWFdng5oHu7JoDVrxF8/5e11j04jTq8SiHYfxUdR/Pmzt4/Nnu8SVjDJ\r\nesZJhwECgYEA7ElQyw2fzF3CQ2x526SBvLfFSxuX8zDkPjFtsrpZf78MHz9AR3ak\r\nlgEjR9aOfeWC1nRRZ6kGG8AgbpIZEN5KoCwZM98D6oub0VIg8iuR1UeArjebI8QV\r\nq2q5BeR3v2nmHsDXeG57D7O7DRko1tazp+d3/19hmMBOa4os19SsEaUCgYEA2WFH\r\nPtVwRtsQNcuKBCKHGzEVDG6Gm86kye2AdfJB7USr0fvD3HRah/chGi+foz+CDwwA\r\nzuBcgL45rSZZCTA9AFzihVpAFJ+a3GDgT/hSjJmMX3vHmySaZABmKNsiXRlPW+Fr\r\n7jkXwk7JH6emgcBH9d+Gyyp6ybVZvv/tNrFCcsECgYEA1DhtNlLASZ+UUVZmhF3W\r\noJc1vmXELgqllS5z5mj05YXD73Sx2P24iXnwJB+Sz4SJ5O+IBeCLufTvrB/QH5Rn\r\n1kCFSk9thwVpJ7HqIVf8nWChNNiAoLkG9XTfRWmUG/mTU9/EJ0ijgtDcmcEVKxCf\r\nP5jn8BfM4pMmW/Q4nolHGnkCgYEAnnLT1a8KSft/k1arYVwxktZx+z/NCmDTqQRf\r\nMJnHCEWX4FVdbKG7I4Q1Mrsn53xxNrqPFDxh8M23iMh8+b+Zl1wdGQqxztaPsLdE\r\nicX9ldKOiULWOfWyO9Y2oO0p3SaHu/dSDrC66r02yMYRDl6zlTq7K/fozIJNynUN\r\n2WHXh4ECgYEAneclaDj/KMtedyaJcblyEjtpzW3V/Gotws2cAaHqVaWDJHRrp0bl\r\nZNg8Jjf/NoixxENZ5bdduAR3JEjTwScRpOluO45Huq2gIMS7jsBKoDAvF94DNUI5\r\nNDtK8x/8+SOdk5HAGNHDoMqVbgZ2NpeOIGxzoZUCCK4f1j1CZbeEIio=\r\n-----END RSA PRIVATE KEY-----"
+  bundleId: com.notused
+  sandbox: true
+
+unidentifiedDelivery: # unidentified delivery or untrusted sender root, run using your build jar & config
+  certificate: xxxxxxx 
+  privateKey: xxxxxxxx 
+  expiresDays: 365
+
+voiceVerification: # voice otp verification, afaik it use vox service
+  url: https://server.chatapp.net
+  locales:
+    - en
+
+pushScheduler: # redis server for push scheduler
+  url: redis://127.0.0.1:6379/pushScheduler # change to your redis server
+  replicaUrls:
+    - redis://127.0.0.1:6379/pushSchedulerReplica # change to your redis server
+
+server: # server configuration
+  applicationConnectors:
+    - type: http
+      port: 8080 # your signal server will run on this port
+  adminConnectors:
+    - type: http
+      port: 8081 # your signal server admin will run on this port
