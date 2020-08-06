@@ -18,10 +18,10 @@ What's proven works
 * [Nginx for Port Forwarding](./signal-server/example-nginx.conf)
 * [Signal with AWS S3 CDN & SQS](./signal-server-aws-setup/)
 * [Signal with MinIO CDN](./signal-minio/)
+* [Signal IOS](./signal-ios/)
 
 What's not proven work
 * [Contact Discovery Service (CDS)](./signal-server/example-cds.yml), you still can use your signal server without CDS.
-* [Signal IOS](./signal-ios/), still on-going.
 
 ## Updating
 If you have do some modification to your code and want to get update from the official git repo, you can follow [UPDATING](./UPDATING.md)
@@ -61,7 +61,6 @@ A: Yes! A Signal user named "tx-hw" did it on their <a href="https://github.com/
 ## To-Dos
 
 * CDS Server: Find server with Intel SGX to try to setup custom CDS Server.
-* Signal iOS: Still can't afford Apple Dev License, find someone with license.
 * Load Test: I want to see the performance of the custom server under stress, will update later.
 
 ## Contributor
@@ -72,6 +71,7 @@ This guide has been written by the help of the developers from community.
 * [kondal789rao](https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18) modified AWS to MinIO.
 * [madeindra](https://github.com/madeindra/setup-guide) compiled the guide, improve the steps, and wrote more guide on uncovered topics
 * [buddhikajay](https://github.com/buddhikajay) wrote turn server configuration example
+* [sinholic](https://github.com/sinholic) wrote iOS guide
 * [amargarido](https://github.com/amargarido) helped to improve the readme
 
 You are welcome to contribute on this guide, please fork the repository and create a Pull Request.
