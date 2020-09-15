@@ -28,6 +28,8 @@ If you have do some modification to your code and want to get update from the of
 
 For the new guide please see [Signal v3.21 Guide](./signal-new).
 
+There is a new way to implement MinIO in v3.21 using a cleaner way than older version, I will write it if there's some requests for it.
+
 ## FAQ
 Q: Will I be able to do ... with Signal?
 
