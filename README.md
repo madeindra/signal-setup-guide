@@ -21,7 +21,7 @@ What's proven works
 * [Signal IOS](./signal-ios/)
 
 What's not proven work
-* [Contact Discovery Service (CDS)](./signal-server/example-cds.yml), you still can use your signal server without CDS.
+* [Contact Discovery Service (CDS)](./signal-server/example-cds.yml), you still can use your signal server without CDS. If you want to implement CDS, please refer to [ the guide written by @konglomerat-id here](https://github.com/secure-sign/securesign-setup-guide)
 
 ## Updating
 If you have do some modification to your code and want to get update from the official git repo, you can follow [UPDATING](./UPDATING.md)
