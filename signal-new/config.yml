@@ -88,21 +88,21 @@ zkConfig: # zkgroup config, run using your build jar
 
 accountsDatabase: # database for account
   driverClass: org.postgresql.Driver
-  user:        postgres
-  password:    postgres
-  url:         jdbc:postgresql://127.0.0.1:5342/signal
+  user:        postgres # change to your psql username
+  password:    postgres # change to your psql password
+  url:         jdbc:postgresql://127.0.0.1:5432/signal #change to your psql url, port, and database name
 
 messageStore: # database for message
   driverClass: org.postgresql.Driver
-  user:        postgres
-  password:    postgres
-  url:         jdbc:postgresql://127.0.0.1:5342/signal
+  user:        postgres # change to your psql username
+  password:    postgres # change to your psql password
+  url:         jdbc:postgresql://127.0.0.1:5432/signal #change to your psql url, port, and database name
 
 abuseDatabase: # database for abuse
   driverClass: org.postgresql.Driver
-  user:        postgres
-  password:    postgres
-  url:         jdbc:postgresql://127.0.0.1:5342/signal
+  user:        postgres # change to your psql username
+  password:    postgres # change to your psql password
+  url:         jdbc:postgresql://127.0.0.1:5432/signal #change to your psql url, port, and database name
 
 gcm: # firebase messaging
   senderId: 000000000 # your sender id
