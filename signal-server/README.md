@@ -28,7 +28,7 @@ Use the Private key to generate certificate (key id can be random, i use 1234)
 java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_from_step_above> --id <the_key_ID>
 ```
 
-4.	Run postgres, redis, coturn (I suggest you use docker-compose)
+4.	Run postgres, redis, coturn (I suggest you use docker-compose. If you don't use docker-compose from this project, please modify the entries for postgres, redis, and coturn accordingly in `config.yml`).
 
 5.	Migrate databases
 ```
