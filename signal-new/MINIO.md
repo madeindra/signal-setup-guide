@@ -133,6 +133,19 @@ import javax.servlet.ServletRegistration;
 `service/src/main/java/org/whispersystems/textsecuregcm/s3/UrlSigner.java`
 
 ```diff
++ import java.io.IOException;
++ import java.security.InvalidKeyException;
++ import java.security.NoSuchAlgorithmException;
++ 
++ import org.xmlpull.v1.XmlPullParserException;
++ 
++ import io.minio.MinioClient;
++ import io.minio.errors.MinioException;
+
+import java.net.URL;
+import java.util.Date;
+public class UrlSigner {
+
   private static final long   DURATION = 60 * 60 * 1000;
 
 -  private final AWSCredentials credentials;
@@ -150,30 +163,108 @@ import javax.servlet.ServletRegistration;
     this.bucket      = bucket;
   }
 
-  public String getPreSignedUrl(long attachmentId, HttpMethod method) throws InvalidKeyException, NoSuchAlgorithmException, IOException, XmlPullParserException, MinioException {
-  		String request = geturl(bucket, String.valueOf(attachmentId), method);    		
-  		return request;
-  }
+- public URL getPreSignedUrl(long attachmentId, HttpMethod method, boolean unaccelerated) {	
+-    AmazonS3                    client  = new AmazonS3Client(credentials);	
+-    GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucket, String.valueOf(attachmentId), method);	
+-    	
+-    request.setExpiration(new Date(System.currentTimeMillis() + DURATION));	
+-    request.setContentType("application/octet-stream");	
+-    if (unaccelerated) {	
+-      client.setS3ClientOptions(S3ClientOptions.builder().setPathStyleAccess(true).build());	
+-    } else {	
+-      client.setS3ClientOptions(S3ClientOptions.builder().setAccelerateModeEnabled(true).build());	
+-    }	
+-    return client.generatePresignedUrl(request);	
+-  }
 
--  public String geturl( String bucketname, String attachmentId, HttpMethod method) throws NoSuchAlgorithmException,
--	        IOException, InvalidKeyException, XmlPullParserException, MinioException {	
+
++  public String getPreSignedUrl(long attachmentId, HttpMethod method) throws InvalidKeyException, NoSuchAlgorithmException, IOException, XmlPullParserException, MinioException {
++  		String request = geturl(bucket, String.valueOf(attachmentId), method);    		
++  		return request;
++  }
+
 +  public String geturl(String bucketname, String attachmentId, HttpMethod method) throws NoSuchAlgorithmException, IOException, InvalidKeyException, XmlPullParserException, MinioException {	
-	    
-	    String url = null;
--	    
--	
--	 MinioClient minioClient = new MinioClient("http://signal.swift.id:9000", "Q3AM3UQ867SPQQA43P2F", "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG");
--	  
++	    
++	    String url = null;
 +	  		
 +		MinioClient minioClient = new MinioClient(endpoint, accessKey, accessSecret);
-	    try {
-	    	if(method==HttpMethod.PUT){		    		
-	    		url = minioClient.presignedPutObject(bucketname, attachmentId, 60 * 60 * 24);
++	    try {
++	    	if(method==HttpMethod.PUT){		    		
++	    		url = minioClient.presignedPutObject(bucketname, attachmentId, 60 * 60 * 24);
++	    	}
++	    	if(method==HttpMethod.GET){		    		 
++	    		url = minioClient.presignedGetObject(bucketname, attachmentId);
++	    	}
++	        System.out.println(url);
++	    } catch(MinioException e) {
++	      System.out.println("Error occurred: " + e);
++	    } catch (java.security.InvalidKeyException e) {
++			e.printStackTrace();
++		}
++	
++	    return url;
++	}
+```
+
+`service/src/test/java/org/whispersystems/textsecuregcm/tests/util/UrlSignerTest.java`
+
+```diff
+package org.whispersystems.textsecuregcm.tests.util;
+
+import com.amazonaws.HttpMethod;
+import org.junit.Test;
+import org.whispersystems.textsecuregcm.s3.UrlSigner;
+
+import java.net.URL;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class UrlSignerTest {
+
+  @Test
+  public void testTransferAcceleration() {
+-    UrlSigner signer = new UrlSigner("foo", "bar", "attachments-test");
+-    URL url = signer.getPreSignedUrl(1234, HttpMethod.GET, false);
++    //UrlSigner signer = new UrlSigner("foo", "bar", "attachments-test");
++    //URL url = signer.getPreSignedUrl(1234, HttpMethod.GET, false);
+
+-    assertThat(url).hasHost("attachments-test.s3-accelerate.amazonaws.com");
++    //assertThat(url).hasHost("attachments-test.s3-accelerate.amazonaws.com");
+  }
+
+  @Test
+  public void testTransferUnaccelerated() {
+-    UrlSigner signer = new UrlSigner("foo", "bar", "attachments-test");
+-    URL url = signer.getPreSignedUrl(1234, HttpMethod.GET, true);
++    //UrlSigner signer = new UrlSigner("foo", "bar", "attachments-test");
++    //URL url = signer.getPreSignedUrl(1234, HttpMethod.GET, true);
+
+-    assertThat(url).hasHost("s3.amazonaws.com");
++    //assertThat(url).hasHost("s3.amazonaws.com");
+  }
+
+}
 ```
 
 `service/src/main/java/org/whispersystems/textsecuregcm/controllers/AttachmentControllerV1.java`
 
 ```diff
+
++ import org.xmlpull.v1.XmlPullParserException;
++ import java.security.InvalidKeyException;
++ import java.security.NoSuchAlgorithmException;
++ import io.minio.errors.MinioException;
+
+import io.dropwizard.auth.Auth;
+
+@Path("/v1/attachments")
+public class AttachmentControllerV1 extends AttachmentControllerBase {
+
+  @SuppressWarnings("unused")
+  private final Logger logger = LoggerFactory.getLogger(AttachmentControllerV1.class);
+
+  private static final String[] UNACCELERATED_REGIONS = {"+20", "+971", "+968", "+974"};
+  
   private final RateLimiters rateLimiters;
   private final UrlSigner    urlSigner;
 
@@ -183,6 +274,42 @@ import javax.servlet.ServletRegistration;
 -    this.urlSigner    = new UrlSigner(accessKey, accessSecret, bucket);
 +    this.urlSigner    = new UrlSigner(endpoint, accessKey, accessSecret, bucket);
   }
+
+  @Timed
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public AttachmentDescriptorV1 allocateAttachment(@Auth Account account)
+-      throws RateLimitExceededException
++      throws RateLimitExceededException, InvalidKeyException, NoSuchAlgorithmException, IOException, XmlPullParserException, MinioException
+  {
+    if (account.isRateLimited()) {
+      rateLimiters.getAttachmentLimiter().validate(account.getNumber());
+    }
+
+    long attachmentId = generateAttachmentId();
+-    URL  url          = urlSigner.getPreSignedUrl(attachmentId, HttpMethod.PUT, Stream.of(UNACCELERATED_REGIONS).anyMatch(region -> account.getNumber().startsWith(region)));
++    String  url          = urlSigner.getPreSignedUrl(attachmentId, HttpMethod.PUT);
+
+-    return new AttachmentDescriptorV1(attachmentId, url.toExternalForm());
++    return new AttachmentDescriptorV1(attachmentId, url);
+
+  }
+
+  @Timed
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/{attachmentId}")
+  public AttachmentUri redirectToAttachment(@Auth                      Account account,
+                                            @PathParam("attachmentId") long    attachmentId)
+-      throws IOException
++      throws IOException, InvalidKeyException, NoSuchAlgorithmException, XmlPullParserException, MinioException
+  {
+-    return new AttachmentUri(urlSigner.getPreSignedUrl(attachmentId, HttpMethod.GET, Stream.of(UNACCELERATED_REGIONS).anyMatch(region -> account.getNumber().startsWith(region))));
++    return new AttachmentUri(new URL(urlSigner.getPreSignedUrl(attachmentId, HttpMethod.GET)));
+  }
+
+}
+
 ```
 
 `service/src/test/java/org/whispersystems/textsecuregcm/tests/controllers/AttachmentControllerTest.java`
@@ -196,25 +323,33 @@ import javax.servlet.ServletRegistration;
               .addResource(new AttachmentControllerV2(rateLimiters, "accessKey", "accessSecret", "us-east-1", "attachmentv2-bucket"))
               .addResource(new AttachmentControllerV3(rateLimiters, "some-cdn.signal.org", "signal@example.com", 1000, "/attach-here", RSA_PRIVATE_KEY_PEM))
               .build();
+
+...
+
+-   assertThat(descriptor.getKey()).isEqualTo(descriptor.getAttachmentIdString());
++   assertThat(descriptor.getKey()).isEqualTo("attachments/" + descriptor.getAttachmentIdString());
+    assertThat(descriptor.getAcl()).isEqualTo("private");
+    assertThat(descriptor.getAlgorithm()).isEqualTo("AWS4-HMAC-SHA256");
+    assertThat(descriptor.getAttachmentId()).isGreaterThan(0);
+    assertThat(String.valueOf(descriptor.getAttachmentId())).isEqualTo(descriptor.getAttachmentIdString());
 ```
 
 `service/config/signal.yml`
 
 ```diff
-  accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
-  bucket:       pingme
-  region:       us-east-1
-+  endpoint:     http://signal.swift.id:9000
+attachments: # S3 configuration
+  accessKey:    Q3AM3UQ867SPQQA43P2F # change to your Minio Access Key
+  accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG # change to your Minio Access Secret
+  bucket:       bucket-name # change to your Minio bucket name
+  region:       us-east-1 # change to your Minio region
++  endpoint:     http://domain.com:9000 # add this entry, then change to your own domain & Minio port
 
-cdn: # AWS S3 configuration
-  accessKey:    Q3AM3UQ867SPQQA43P2F
-  accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
-  bucket:       pingme
-  region:       us-east-1
-+  endpoint:     http://signal.swift.id:9000
-
-accountsDatabase:
-  driverClass: org.postgresql.Driver
+cdn: # S3 configuration
+  accessKey:    Q3AM3UQ867SPQQA43P2F # change to your Minio Access Key
+  accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG # change to your Minio Access Secret
+  bucket:       bucket-name # change to your Minio bucket name
+  region:       us-east-1 # change to your Minio region
++  endpoint:     http://domain.com.id:9000 # add this entry, then change to your own domain & Minio port
 
 ```
 
