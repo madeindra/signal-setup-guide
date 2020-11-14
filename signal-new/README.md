@@ -29,7 +29,7 @@ git clone https://github.com/signalapp/Signal-Server/
 ...
 ```
 
-4. Add this `import` statement and fix the `final PrivateKey key` variable in `service/src/main/java/org/whispersystems/textsecuregcm/gcp/CanonicalRequestSigner.java`
+4. (Optional, only if you see error regarding this line) Add this `import` statement and fix the `final PrivateKey key` variable in `service/src/main/java/org/whispersystems/textsecuregcm/gcp/CanonicalRequestSigner.java`
 
 ```
 ...
