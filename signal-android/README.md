@@ -281,3 +281,24 @@ assertThat(descriptor.getKey()).isEqualTo("attachments/" + descriptor.getAttachm
 ```
 
 Then re-build the server and run it.
+
+Q: My app show `Your version of Signal has Expired`
+
+A: Please modify `getDaysTillBuildExpiry()` in `Util.java` to this:
+
+```
+public static int getDaysTillBuildExpiry() {
+  return Integer.MAX_VALUE;
+}
+```
+
+Q: Is there any way to change package name in easier way?
+
+A: You can add `package` in `main/AndroidManifest.xml`
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="your.package.name">
+```
