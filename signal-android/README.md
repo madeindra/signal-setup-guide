@@ -294,11 +294,14 @@ public static int getDaysTillBuildExpiry() {
 
 Q: Is there any way to change package name in easier way?
 
-A: You can add `package` in `main/AndroidManifest.xml`
+A: You can try adding `applicationId` under `defaultConfig`, you can find it inside `app/build.gradle`
 
 ```
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="your.package.name">
+defaultConfig {
+...
+
+   applicationId "your.package.name"
+   
+...
+}
 ```
