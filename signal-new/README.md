@@ -1,5 +1,5 @@
 # Signal New Code
-This guide is written by using Signal Server v3.21 & Signal Android v4.53.6
+This guide is written by using Signal Server v3.21 & Signal Android v4.66.1
 
 ## Requirement
 * Same requirement as old version
