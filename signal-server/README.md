@@ -117,6 +117,32 @@ sudo nginx -s reload
 
 If you are having a hard time configuring NginX manually, you can try generating configuration file by using <a href="https://nginxconfig.io/">nginxconfig.io</a>.
 
+## Creating a service to make server run automatically on reboot / restart
+
+1. Go to `/etc/systemd/system` and create a file named `signal.service`
+
+2. Open the file and paste this. **Change** `WorkingDirectory` to your directory, also change the path to java. To find the path to java, run `which java`.
+
+```
+[Unit]
+Description=Signal Server
+
+[Service]
+User=root
+WorkingDirectory=/path/to/signal/directory
+ExecStart=/path/to/java -jar TextSecureServer-2.92.jar server service/config/config.yml
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+3. Run `sudo systemctl daemon-reload`
+
+4. Run `sudo systemctl enable signal.service`
+
 ## FAQ
 Q: How do I get Recapthca?
 
