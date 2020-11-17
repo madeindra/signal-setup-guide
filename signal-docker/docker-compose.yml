@@ -55,6 +55,7 @@ services:
   redis_main:
     image: redis:5
     container_name: redis_main
+    restart: always
     ports:
       - '6379:6379'
     volumes:
@@ -62,6 +63,7 @@ services:
   redis_replication:
     image: redis:5
     container_name: redis_replication
+    restart: always
     command: redis-server --port 6380
     ports:
       - '6380:6380'
