@@ -250,11 +250,11 @@ A: For now, I have no idea why you can't upload to a path except root, I've trie
 
 Q: How did I make Maps works?
 
-A: On Android, search for `com.google.android.geo.API_KEY` and change the value below that line with your own Google Maps API Key.
+A: On Android, search for `com.google.android.geo.API_KEY` and change the value below that line with your own Google Maps API Key. Remember to `Enable` `Maps SDK for Android`
 
 Q: How did I make Giphy/Sticker works?
 
-A: For now, sticker file is not available publicly. Also, Giphy need content proxy to works, for now the content proxy source code is still not being shared publicly.
+A: Don't change `CONTENT_PROXY_URL` on your `build.gradle` but you may change the Giphy API key on android.
 
 Q: What can I do so the attachments not uploaded to root bucket?
 
