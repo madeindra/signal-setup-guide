@@ -126,6 +126,6 @@ unidentifiedDelivery:
   expiresDays: 365
 
 voiceVerification:
-  url: https://server.chatapp.net
+  url: https://cdn-ca.signal.org/verification
   locales:
     - en
