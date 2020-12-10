@@ -79,9 +79,9 @@ This guide has been written by the help of the developers from community.
 You are welcome to contribute on this guide, please fork the repository and create a Pull Request.
 
 ## Issue
-If you have any questions please write an issues and I will try to help.
+If you have any questions please create a discussion instead of issue.
 
-You are recommended to <a href="https://github.com/madeindra/setup-guide/issues/new/choose">open an issue here</a> if you face a difficulties to let the communities help you too and contributing to the communities in the process.
+You are recommended to <a href="https://github.com/madeindra/setup-guide/discussions/new">open a discussion thread here</a> if you face a difficulties to let the communities help you too and contributing to the communities in the process.
 
 ## Donating
 You can donate to me if you think this guide has helped you, your donation will greatly appreciated.
