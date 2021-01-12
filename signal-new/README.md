@@ -1,7 +1,10 @@
 # Signal New Code
 This guide is written by using Signal Server v3.21 & Signal Android v4.66.1
 
-(To use MinIO instead of AWS S3, please refer to [MinIO](./MINIO.md) guide)
+(For Signal v2.92 please refer to [signal-server](../signal-server) guide)
+
+## Related Guide
+* [Updated MinIO Guide](./MINIO.md)
 
 ## Requirement
 * Same requirement as old version
