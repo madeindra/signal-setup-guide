@@ -1,6 +1,8 @@
 # Signal Server
 This guide is written by using Signal v2.92.
 
+(For Signal v3.21 please refer to [signal-new](../signal-new) guide)
+
 ## Requirement
 * JDK 11
 * SSL Certificate for your domain
