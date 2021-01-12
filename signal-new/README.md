@@ -1,6 +1,8 @@
 # Signal New Code
 This guide is written by using Signal Server v3.21 & Signal Android v4.66.1
 
+(To use MinIO instead of AWS S3, please refer to [MinIO](./MINIO.md) guide)
+
 ## Requirement
 * Same requirement as old version
 * GCP is currenlty disabled
