@@ -2,7 +2,7 @@
 
 To use MinIO instead of AWS in v3.21 you can implement this cleaner way rather than the old way
 
-## Signal Server 
+## Signal Server
 
 `service/src/main/java/org/whispersystems/textsecuregcm/s3/PostPolicyGenerator.java`
 
@@ -136,9 +136,9 @@ import javax.servlet.ServletRegistration;
 + import java.io.IOException;
 + import java.security.InvalidKeyException;
 + import java.security.NoSuchAlgorithmException;
-+ 
++
 + import org.xmlpull.v1.XmlPullParserException;
-+ 
++
 + import io.minio.MinioClient;
 + import io.minio.errors.MinioException;
 
@@ -163,36 +163,36 @@ public class UrlSigner {
     this.bucket      = bucket;
   }
 
-- public URL getPreSignedUrl(long attachmentId, HttpMethod method, boolean unaccelerated) {	
--    AmazonS3                    client  = new AmazonS3Client(credentials);	
--    GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucket, String.valueOf(attachmentId), method);	
--    	
--    request.setExpiration(new Date(System.currentTimeMillis() + DURATION));	
--    request.setContentType("application/octet-stream");	
--    if (unaccelerated) {	
--      client.setS3ClientOptions(S3ClientOptions.builder().setPathStyleAccess(true).build());	
--    } else {	
--      client.setS3ClientOptions(S3ClientOptions.builder().setAccelerateModeEnabled(true).build());	
--    }	
--    return client.generatePresignedUrl(request);	
+- public URL getPreSignedUrl(long attachmentId, HttpMethod method, boolean unaccelerated) {
+-    AmazonS3                    client  = new AmazonS3Client(credentials);
+-    GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucket, String.valueOf(attachmentId), method);
+-
+-    request.setExpiration(new Date(System.currentTimeMillis() + DURATION));
+-    request.setContentType("application/octet-stream");
+-    if (unaccelerated) {
+-      client.setS3ClientOptions(S3ClientOptions.builder().setPathStyleAccess(true).build());
+-    } else {
+-      client.setS3ClientOptions(S3ClientOptions.builder().setAccelerateModeEnabled(true).build());
+-    }
+-    return client.generatePresignedUrl(request);
 -  }
 
 
 +  public String getPreSignedUrl(long attachmentId, HttpMethod method) throws InvalidKeyException, NoSuchAlgorithmException, IOException, XmlPullParserException, MinioException {
-+  		String request = geturl(bucket, String.valueOf(attachmentId), method);    		
++  		String request = geturl(bucket, String.valueOf(attachmentId), method);
 +  		return request;
 +  }
 
-+  public String geturl(String bucketname, String attachmentId, HttpMethod method) throws NoSuchAlgorithmException, IOException, InvalidKeyException, XmlPullParserException, MinioException {	
-+	    
++  public String geturl(String bucketname, String attachmentId, HttpMethod method) throws NoSuchAlgorithmException, IOException, InvalidKeyException, XmlPullParserException, MinioException {
++
 +	    String url = null;
-+	  		
++
 +		MinioClient minioClient = new MinioClient(endpoint, accessKey, accessSecret);
 +	    try {
-+	    	if(method==HttpMethod.PUT){		    		
++	    	if(method==HttpMethod.PUT){
 +	    		url = minioClient.presignedPutObject(bucketname, attachmentId, 60 * 60 * 24);
 +	    	}
-+	    	if(method==HttpMethod.GET){		    		 
++	    	if(method==HttpMethod.GET){
 +	    		url = minioClient.presignedGetObject(bucketname, attachmentId);
 +	    	}
 +	        System.out.println(url);
@@ -201,7 +201,7 @@ public class UrlSigner {
 +	    } catch (java.security.InvalidKeyException e) {
 +			e.printStackTrace();
 +		}
-+	
++
 +	    return url;
 +	}
 ```
@@ -264,7 +264,7 @@ public class AttachmentControllerV1 extends AttachmentControllerBase {
   private final Logger logger = LoggerFactory.getLogger(AttachmentControllerV1.class);
 
   private static final String[] UNACCELERATED_REGIONS = {"+20", "+971", "+968", "+974"};
-  
+
   private final RateLimiters rateLimiters;
   private final UrlSigner    urlSigner;
 
@@ -358,6 +358,22 @@ cdn: # S3 configuration
 `libsignal/service/src/main/java/org/whispersystems/signalservice/internal/push/PushServiceSocket.java`
 
 ```diff
+
+public class PushServiceSocket {
+
+   private static final String KBS_AUTH_PATH                  = "/v1/backup/auth";
+
+-  private static final String ATTACHMENT_KEY_DOWNLOAD_PATH   = "attachments/%s";
+-  private static final String ATTACHMENT_ID_DOWNLOAD_PATH    = "attachments/%d";
+-  private static final String ATTACHMENT_UPLOAD_PATH         = "attachments/";
++  private static final String ATTACHMENT_KEY_DOWNLOAD_PATH   = "%s";
++  private static final String ATTACHMENT_ID_DOWNLOAD_PATH    = "%d";
++  private static final String ATTACHMENT_UPLOAD_PATH         = "";
+   private static final String AVATAR_UPLOAD_PATH             = "";
+
+   private static final String STICKER_MANIFEST_PATH          = "stickers/%s/manifest.proto";
+
+
 RequestBody requestBody = new MultipartBody.Builder()
                                                .setType(MultipartBody.FORM)
                                                .addFormDataPart("acl", acl)
