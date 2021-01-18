@@ -58,7 +58,7 @@ String   objectName   =    "attachments/" + String.valueOf(attachmentId);
 ...
 ```
 
-6. (Optional, if you follow the previous step) Update the test file in `service/src/test/java/org/whispersystems/textsecuregcm/tests/controllers/AttachmentControllerTest.java` 
+6. (Optional, if you follow the previous step) Update the test file in `service/src/test/java/org/whispersystems/textsecuregcm/tests/controllers/AttachmentControllerTest.java`
 
 ```
 ...
@@ -143,7 +143,7 @@ buildConfigField "String", "SIGNAL_KEY_BACKUP_URL", "\"https://domain.com\""
 
 buildConfigField "String", "UNIDENTIFIED_SENDER_TRUST_ROOT", "\"change-to-unidentified-delivery-public-key\""
 buildConfigField "String", "ZKGROUP_SERVER_PUBLIC_PARAMS", "\"change-to-zkparams-public-key\""
-        
+
 ...
 ```
 
@@ -154,6 +154,8 @@ buildConfigField "String", "ZKGROUP_SERVER_PUBLIC_PARAMS", "\"change-to-zkparams
 ```
 ...
 
+private static final String ATTACHMENT_KEY_DOWNLOAD_PATH   = "%s";
+private static final String ATTACHMENT_ID_DOWNLOAD_PATH    = "%d";
 private static final String ATTACHMENT_UPLOAD_PATH   =   "";
 
 ...
