@@ -1,21 +1,36 @@
 ---
-name: Issue report
-about: Create a issue regarding the guide
-title: Write your issue's title here
+name: Help Wanted
+about: Ask for help regarding the guide
+title: What do you need help with?
 labels: help wanted
 assignees: madeindra
 
 ---
 
-**Describe the issue and what do you intend to do**
-A clear and concise description of what the issue is.
+**Server Version :** (Server v2.92 / Server v3.21)
 
-**What step did you follow or did not follow**
-1. Installing ...
-2. Configuring ...
+**Client Version :** (Android vX.XX.XX / iOS vX.XX.XX / Desktop vX.XX.XX) 
 
-**Screenshots or Log**
-Please show the error from the server or the client
+**Describe what are you trying to achieve**
+
+A clear goal that you wanted
+
+**Describe the issue that you faced**
+
+Tell me which guide that you follow & which step that you do or did not do
+
+Describe the step to reproduce the errors
+
+**Logs**
+
+```
+Copy your log and paste it here
+```
+
+**Screenshots**
+
+Attach screenshots of your error here
 
 **Additional context**
-Please explain what version of server or client did you use
+
+If you have any additional info, please explain it here
