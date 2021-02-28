@@ -4,6 +4,21 @@ To use MinIO instead of AWS in v3.21 you can implement this cleaner way rather t
 
 ## Signal Server 
 
+`service/pom.xml`
+```diff
++ <dependency>
++     <groupId>xmlpull</groupId>
++     <artifactId>xmlpull</artifactId>
++     <version>1.1.3.1</version>
++ </dependency>
++ 
++ <dependency>
++     <groupId>io.minio</groupId>
++     <artifactId>minio</artifactId>
++     <version>6.0.11</version>
++ </dependency>
+```
+
 `service/src/main/java/org/whispersystems/textsecuregcm/s3/PostPolicyGenerator.java`
 
 ```diff
