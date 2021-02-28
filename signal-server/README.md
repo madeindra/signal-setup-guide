@@ -79,30 +79,25 @@ sudo apt-get install python-certbot-nginx
 sudo ufw allow 'Nginx Full'
 ```
 
-4. Create your server configuration in `/etc/nginx/sites-available/domain.com`. 
+4. Create your server configuration in `/etc/nginx/sites-enabled/domain.com`. 
 ```
 server {
   listen 80;
   listen [::]:80;
 
-  server_name domain.com, www.domain.com;
+  server_name domain.com;
 }
 ```
 
-5. Create a symbolic link from your configuration to sites-enabled.
-```
-sudo ln -s /etc/nginx/sites-available/domain.com /etc/nginx/sites-enabled/domain.com
-```
-
-6. Reload your nginx to apply the new configuration
+5. Reload your nginx to apply the new configuration
 ```
 sudo nginx -s reload
 
 ```
 
-7. Run certbot to generate SSL Certificate
+6. Run certbot to generate SSL Certificate
 ```
-certbot --nginx -d domain.com -d www.domain.com
+certbot --nginx -d domain.com
 ``` 
 
 8. When asked `Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.` You are recommended to choose `2: Redirect`. After the process is done your certificate will be located in
