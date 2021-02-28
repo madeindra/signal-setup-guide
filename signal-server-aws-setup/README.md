@@ -20,19 +20,13 @@ Currently, Signal use AWS for attachment and CDS queue. However you can skip thi
 
 3. Name your `Bucket name` and select your `Region`, then select `Next`.
 
-4. On `Configure options` tab, select `Next`.
+4. Scroll down to `Block Public Access Setting for bucket` remove the check on `Block all public access`  and check on `I acknowledge that the current settings may result in this bucket and the objects within becoming public`.
 
-5. On `Set permission` tab, remove the check on `Block all public access` and check on `I acknowledge that the current settings may result in this bucket and the objects within becoming public`, then select `Next`.
+5. Scroll down and click `Create Bucket` 
 
-6. On `Review` tab, click `Create bucket`.
+6. Open your bucket by clicking on the name.
 
-7. Open your bucket, then select `Permission` tab, and select `Access Control List` sub tab.
-
-8. On `Public access` select `Everyone` and check all on `Access to the objects` and `Access to this bucket's ACL`.
-
-9. Do the same on `S3 log delivery group` in `Log Delivery`.
-
-10. Select `Bucket Policy` sub tab and write this (change `your-bucket-name` to your bucket name).
+7. Go to `Permissions` tab and scroll down to `Bucket policy`, fill with this (change `your-bucket-name` to your bucket name).
 
 ```
 {
@@ -49,13 +43,18 @@ Currently, Signal use AWS for attachment and CDS queue. However you can skip thi
         }
     ]
 }
+
 ```
 
-11. On `Access point` tab, click `Create access point`.
+8. Scroll down to `Access control list (ACL)` and click on `Edit`.
 
-12. Give `Access point name` and select `Internet` on `Network access type`, remove the check on `Block all public access`.
+9. Check on all List, Read, and Write and click `Save changes.
 
+10. Go to `Access Points` tab and click `Create access point`.
 
+11. Give `Access point name` and select `Internet` on `Network access type`, remove the check on `Block all public access`.
+
+12. Scroll down and click `Create access point`
 
 ## Cloudfront CDN for Attachments & Profile Picture
 
