@@ -426,3 +426,13 @@ versionCode canonicalVersionCode * postFixSize
         buildConfigField "String[]", "LANGUAGES", "new String[]{\"" + autoResConfig().collect { s -> s.replace('-r', '_') }.join('", "') + '"}'
         buildConfigField "int", "CANONICAL_VERSION_CODE", "$canonicalVersionCode"
 ```
+
+## Important!
+
+It seems that MinIO mc have a little problem in creating bucket. For this, follow this steps:
+
+1. Enable `MINIO_BROWSER` in `docker-compose.yml`.
+2. Open MinIO in your browser, it's default to `http://domain:9000`.
+3. Create a bucket.
+4. Edit bucket policy and add `*` with `Read & Write` policy (making it public).
+5. Create a `attachments` directory in bucket
