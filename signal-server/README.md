@@ -5,12 +5,14 @@ This guide is written by using Signal v2.92.
 
 ## Related Guide
 * Nginx Reverse Proxy (Scroll down on this guide)
+* [Step to install Dependencies](./DEPENDENCIES.md)
 * [Docker for PostgreSQL & Redis](../signal-docker)
 * [CoTurn Server](../coturn-server)
 * [Amazon Web Service / AWS](../signal-server-aws-setup)
 * [Remove Twilio](../signal-server-no-twilio)
 * [Using Own SSL Certificate (Self Signed)](../signal-server-self-signed-certificate)
 * [Use MinIO instead of AWS S3](../signal-minio)
+* [Autostart Signal on Startup](../signal-server-autostart)
 
 ## Requirement
 * JDK 11

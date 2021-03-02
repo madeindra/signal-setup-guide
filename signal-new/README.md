@@ -5,6 +5,8 @@ This guide is written by using Signal Server v3.21 & Signal Android v4.66.1
 
 ## Related Guide
 * [Updated MinIO Guide](./MINIO.md)
+* [Same Requirement as Old Version](../signal-server)
+* [Steps for Requirement](../signal-server/DEPENDENCIES.md)
 
 ## Requirement
 * Same requirement as old version
