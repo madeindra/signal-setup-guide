@@ -72,7 +72,6 @@ This guide has been written by the help of the developers from community.
 * [LiteSpeedDev](https://github.com/LiteSpeedDev/SignalApp-Setup) wrote nginx configuration and turn/stun server 
 * [kondal789rao](https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18) modified AWS to MinIO.
 * [madeindra](https://github.com/madeindra/setup-guide) compiled the guide, improve the steps, and wrote more guide on uncovered topics
-* [buddhikajay](https://github.com/buddhikajay) wrote turn server configuration example
 * [sinholic](https://github.com/sinholic) wrote iOS guide
 * [amargarido](https://github.com/amargarido) helped to improve the readme
 
