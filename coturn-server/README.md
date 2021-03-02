@@ -14,15 +14,7 @@ sudo apt-get -y install coturn
 
 4. Run the turnserver from command line
 ```
-turnserver
+turnserver -o
 ```
 
-## Firewall Rules
-
-To let coturn work, you need to open these port:
-* 80 TCP
-* 443 TCP
-* 3478 UDP
-* 10000–20000 UDP
-
-In some cases, some mobile provider can’t be used to access port 3478 or port 5349, try to replace the port in config with 8000 to check if it solve the problem.
+In some cases, some mobile provider can’t be used to access port 3478 or port 5349, try to replace the port in config with 8000 or 8080 to check if it solve the problem.
