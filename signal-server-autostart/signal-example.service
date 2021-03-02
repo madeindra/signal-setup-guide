@@ -1,0 +1,13 @@
+[Unit]
+Description=Signal Server
+
+[Service]
+ExecStart=/usr/bin/java -jar /path/to/signal/service/target/TextSecureServer-X.XX.jar server /path/to/signal/service/config/config.yml
+Type=simple
+WorkingDirectory=/path/to/signal
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
