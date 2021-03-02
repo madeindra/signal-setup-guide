@@ -15,3 +15,12 @@ public CompletableFuture<Boolean> deliverSmsVerification(String destination, Opt
 
 ...
 ```
+
+## Using test Number
+Try adding `testDevices` to `config.yml`, number is the phone number and code is the OTP
+
+```
+testDevices:
+  - number: "+1234567890"
+    code: 123456
+```
