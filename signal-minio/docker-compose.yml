@@ -1,9 +1,9 @@
 version: '2'
-
 services:
   minio:
-    image: minio/minio
+    image: minio/minio:latest
     container_name: minio
+    restart: always
     ports:
       - 9000:9000
     environment:
@@ -16,11 +16,8 @@ services:
     volumes:
       - ./config:/root/.minio
       - ./data:/data
-    networks:
-      - bridge
-      
   mc:
-    image: minio/mc
+    image: minio/mc:latest
     depends_on:
       - minio
     container_name: mc
@@ -30,12 +27,7 @@ services:
     entrypoint: >
       /bin/sh -c "
       until (/usr/bin/mc config host add s3 http://change-to-your-domain.com:9000 $${MINIO_ACCESS_KEY} $${MINIO_SECRET_KEY}) do echo '...waiting...' && sleep 1; done;
-      /usr/bin/mc mb s3/name-of-bucket --region us-east-1;
-      /usr/bin/mc policy set public s3/name-of-bucket;
+      /usr/bin/mc mb s3/change-to-bucket-name --region us-east-1;
+      /usr/bin/mc policy set public s3/change-to-bucket-name;
       exit 0;
       "
-    networks:
-      - bridge
-
-networks:
-  bridge:
