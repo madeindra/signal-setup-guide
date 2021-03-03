@@ -16,6 +16,10 @@ public CompletableFuture<Boolean> deliverSmsVerification(String destination, Opt
 ...
 ```
 
+## Further Modification
+
+With modification above, it is possible to send the OTP via email.
+
 ## Using test Number
 Try adding `testDevices` to `config.yml`, number is the phone number and code is the OTP
 
