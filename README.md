@@ -10,15 +10,19 @@ On this repository, you will find guides about Signal Setup that might help peop
 
 ## Content
 What's proven works
-* [Signal Server](./signal-server/)
+* [Signal Server v2.92](./signal-server/)
+* [Signal Server v3.21](./signal-new/)
 * [Signal Android](./signal-android/)
-* [Signal Desktop](./signal-desktop/)
-* [Postgres & Redis for Signal Dependency on Docker](./signal-docker/)
-* [Turn Server with CoTurn](./coturn-server/)
-* [Nginx for Port Forwarding](./signal-server/example-nginx.conf)
-* [Signal with AWS S3 CDN & SQS](./signal-server-aws-setup/)
-* [Signal with MinIO CDN](./signal-minio/)
 * [Signal IOS](./signal-ios/)
+* [Signal Desktop](./signal-desktop/)
+* [Signal Dependency on Docker (Postgres & Redis)](./signal-docker/)
+* [Voice/Video Call  (CoTurn)](./coturn-server/)
+* [Port Forwarding (Nginx)](./signal-server/example-nginx.conf)
+* [Signal Server with AWS S3 CDN & SQS](./signal-server-aws-setup/)
+* [Signal Server with MinIO CDN](./signal-minio/)
+* [Signal Server Autostart Script](./signal-server-autostart/)
+* [Signal Server With Self Signed Certificate for Localhost](./signal-server-self-signed-certificate/)
+* [Signal Server Without Twilio](./signal-server-no-twilio/)
 
 What's not proven work
 * [Contact Discovery Service (CDS)](./signal-server/example-cds.yml), you still can use your signal server without CDS. If you want to implement CDS, please refer to [ the guide written by @konglomerat-id here](https://github.com/secure-sign/securesign-setup-guide)
@@ -59,11 +63,6 @@ A: Yes, it is possible but it is not secure, see example on [Signal Server Self 
 Q: Can I remove Google Mobile Service (GMS) from Signal?
 
 A: Yes! A Signal user named "tx-hw" did it on their <a href="https://github.com/tw-hx/Signal-Android/tree/4.60.5.0-FOSS">Github Fork of Signal-Android</a>. You can read more about it on their <a href="https://community.signalusers.org/t/ive-removed-gms-from-the-signal-website-build-its-now-completely-open-source/14382">Signal Community Post</a>
-
-## To-Dos
-
-* CDS Server: Find server with Intel SGX to try to setup custom CDS Server.
-* Load Test: I want to see the performance of the custom server under stress, will update later.
 
 ## Contributor
 This guide has been written by the help of the developers from community.
