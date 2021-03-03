@@ -164,3 +164,8 @@ private static final String ATTACHMENT_UPLOAD_PATH   =   "";
 7. Setup Firebase, it has the same steps as the old code.
 
 8. Build the project.
+
+## Known Issue
+1. User can't create PIN in this server version, so skip it after registration.
+2. User profile (name & display picture) not found because the API return 404.
+3. Due to this server version being too old, the android client version that compatible to this server is too old too, so it give "Version Expired" error, for this please refer to the [Signal Android Guide](../signal-android/README.md).
