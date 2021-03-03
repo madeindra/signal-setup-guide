@@ -1,57 +1,18 @@
 version: '2.2'
 services:
-  signal_account_database:
+  signal_database:
     image:          postgres:11
-    container_name: postgres_account_database
+    container_name: postgres_database
     restart:        always
     environment:
       POSTGRES_USER:     postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
-      PGDATA:            /var/lib/postgresql/data/pgdata
-    ports:
-      - '5431:5432'
-    volumes:
-      - ./postgres_database:/var/lib/postgresql/data
-  signal_keys_database:
-    image:          postgres:11
-    container_name: postgres_keys_database
-    restart:        always
-    environment:
-      POSTGRES_USER:     postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
+      POSTGRES_MULTIPLE_DATABASES:       abusedb, accountdb, keysdb, messagedb
       PGDATA:            /var/lib/postgresql/data/pgdata
     ports:
       - '5432:5432'
     volumes:
-      - ./postgres_keys_database:/var/lib/postgresql/data
-  signal_message_database:
-    image:          postgres:11
-    container_name: postgres_message_database
-    restart:        always
-    environment:
-      POSTGRES_USER:     postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
-      PGDATA:            /var/lib/postgresql/data/pgdata
-    ports:
-      - '5433:5432'
-    volumes:
-      - ./postgres_message_store:/var/lib/postgresql/data
-  signal_abuse_database:
-    image:          postgres:11
-    container_name: postgres_abuse_database
-    restart:        always
-    environment:
-      POSTGRES_USER:     postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
-      PGDATA:            /var/lib/postgresql/data/pgdata
-    ports:
-      - '5434:5432'
-    volumes:
-      - ./postgres_abuse_database:/var/lib/postgresql/data
+      - ./postgres_database:/var/lib/postgresql/data
   redis_main:
     image: redis:5
     container_name: redis_main
@@ -77,10 +38,7 @@ services:
     ports: 
       - 8000:8080
     links: 
-      - signal_account_database
-      - signal_keys_database
-      - signal_message_database
-      - signal_abuse_database
+      - signal_database
     environment: 
       ADMINER_DESIGN: nette
     networks:
