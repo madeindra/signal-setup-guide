@@ -1,6 +1,9 @@
 # Setup Guide for Signal
 On this repository, you will find guides about Signal Setup that might help people who want to run their own signal server.
 
+## Update
+Signal Server v5.48 just released! Will update once I completed working on it.
+
 ## Requirements
 * SSL Certificate of your server's domain (For secure communication, can be bypassed but it will be less secure)
 * Google Recaptcha (For anti-spam in authentication)
