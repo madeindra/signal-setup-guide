@@ -1,7 +1,7 @@
 # Signal Server
 This guide is written by using Signal v2.92.
 
-(For Signal v3.21 please refer to [signal-new](../signal-new) guide)
+(For Signal v3.21 please refer to [signal-new](../signal-server-3.21/) guide)
 
 ## Related Guide
 * Nginx Reverse Proxy (Scroll down on this guide)

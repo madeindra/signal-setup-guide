@@ -1,6 +1,6 @@
 ## Related Guide
 
-[New Cleaner Minio Modification in v3.21](../signal-new/MINIO.md)
+[New Cleaner Minio Modification in v3.21](../signal-server-3.21/MINIO.md)
 ## MinIO for AWS Replacement
 
 If you are interested to use MinIO instead of AWS S3 or Cloudfront, this is how you can do that.  To simplify development, you can deploy minio using docker-compose.

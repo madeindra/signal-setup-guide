@@ -14,7 +14,7 @@ Signal Server v5.48 just released! Will update once I completed working on it.
 ## Content
 What's proven works
 * [Signal Server v2.92](./signal-server-2.92/)
-* [Signal Server v3.21](./signal-new/)
+* [Signal Server v3.21](./signal-server-3.21/)
 * [Signal Android](./signal-android/)
 * [Signal IOS](./signal-ios/)
 * [Signal Desktop](./signal-desktop/)
@@ -33,9 +33,9 @@ What's not proven work
 ## Updating
 If you have do some modification to your code and want to get update from the official git repo, you can follow [UPDATING](./UPDATING.md)
 
-For the new guide please see [Signal v3.21 Guide](./signal-new).
+For the new guide please see [Signal v3.21 Guide](./signal-server-3.21/).
 
-There is a new way to implement MinIO in v3.21 using a cleaner way than older version, [please see the guide](./signal-new/MINIO.md)
+There is a new way to implement MinIO in v3.21 using a cleaner way than older version, [please see the guide](./signal-server-3.21/MINIO.md)
 
 ## FAQ
 Q: Will I be able to do ... with Signal?
