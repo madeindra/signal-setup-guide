@@ -1,12 +1,12 @@
 # Signal New Code
 This guide is written by using Signal Server v3.21 & Signal Android v4.66.1
 
-(For Signal v2.92 please refer to [signal-server](../signal-server) guide)
+(For Signal v2.92 please refer to [signal-server](../signal-server-2.92/) guide)
 
 ## Related Guide
 * [Updated MinIO Guide](./MINIO.md)
-* [Same Requirement as Old Version](../signal-server)
-* [Steps for Requirement](../signal-server/DEPENDENCIES.md)
+* [Same Requirement as Old Version](../signal-server-2.92/)
+* [Steps for Requirement](../signal-server-2.92/DEPENDENCIES.md)
 
 ## Requirement
 * Same requirement as old version
@@ -17,7 +17,7 @@ This guide is written by using Signal Server v3.21 & Signal Android v4.66.1
 1. Clone signal server
 
 ```
-git clone https://github.com/signalapp/Signal-Server/
+git clone https://github.com/signalapp/signal-server-2.92/
 ```
 
 2. Create your config using new `config.yml`

@@ -13,14 +13,14 @@ Signal Server v5.48 just released! Will update once I completed working on it.
 
 ## Content
 What's proven works
-* [Signal Server v2.92](./signal-server/)
+* [Signal Server v2.92](./signal-server-2.92/)
 * [Signal Server v3.21](./signal-new/)
 * [Signal Android](./signal-android/)
 * [Signal IOS](./signal-ios/)
 * [Signal Desktop](./signal-desktop/)
 * [Signal Dependency on Docker (Postgres & Redis)](./signal-docker/)
 * [Voice/Video Call  (CoTurn)](./coturn-server/)
-* [Port Forwarding (Nginx)](./signal-server/example-nginx.conf)
+* [Port Forwarding (Nginx)](./signal-server-2.92/example-nginx.conf)
 * [Signal Server with AWS S3 CDN & SQS](./signal-server-aws-setup/)
 * [Signal Server with MinIO CDN](./signal-minio/)
 * [Signal Server Autostart Script](./signal-server-autostart/)
@@ -28,7 +28,7 @@ What's proven works
 * [Signal Server Without Twilio](./signal-server-no-twilio/)
 
 What's not proven work
-* [Contact Discovery Service (CDS)](./signal-server/example-cds.yml), you still can use your signal server without CDS. If you want to implement CDS, please refer to [ the guide written by @konglomerat-id here](https://github.com/secure-sign/securesign-setup-guide)
+* [Contact Discovery Service (CDS)](./signal-server-2.92/example-cds.yml), you still can use your signal server without CDS. If you want to implement CDS, please refer to [ the guide written by @konglomerat-id here](https://github.com/secure-sign/securesign-setup-guide)
 
 ## Updating
 If you have do some modification to your code and want to get update from the official git repo, you can follow [UPDATING](./UPDATING.md)
@@ -53,7 +53,7 @@ A: Probably related to your port, either it is not allowed by the firewall or it
 Q: Can I subtitute AWS to MinIO?
 
 A: I tried it here [signal-minio](./signal-minio/) using modification created by <a href="https://community.signalusers.org/t/amazon-s3-component-replacement-for-text-secure-server-local-installation/5375/18">kondal789rao
-</a>. Someone also did a pull request here: <a href="https://github.com/signalapp/Signal-Server/pull/76">Use MinIO instead of the AWS</a>. Also you can try to look into <a href="https://github.com/localstack/localstack">Localstack</a> for local development.
+</a>. Someone also did a pull request here: <a href="https://github.com/signalapp/signal-server-2.92/pull/76">Use MinIO instead of the AWS</a>. Also you can try to look into <a href="https://github.com/localstack/localstack">Localstack</a> for local development.
 
 Q: Can I disable / change Twilio? (by getting the generated OTP on the server)
 
