@@ -1,8 +1,9 @@
 # Setup Guide for Signal
 On this repository, you will find guides about Signal Setup that might help people who want to run their own signal server.
 
-## Update
-Signal Server v5.48 just released! Will update once I completed working on it.
+## Disclaimer
+This repository is not an official Signal Guide and there is no relation to the team behind Signal. It's just a guide written outside my work-time to help people. 
+These guides are provided as-is, please refer to Issue section of this readme file for more information regarding this guide. Please do not contact me through my personal line or social media.
 
 ## Requirements
 * SSL Certificate of your server's domain (For secure communication, can be bypassed but it will be less secure)
@@ -15,6 +16,7 @@ Signal Server v5.48 just released! Will update once I completed working on it.
 What's proven works
 * [Signal Server v2.92](./signal-server-2.92/)
 * [Signal Server v3.21](./signal-server-3.21/)
+* * [Signal Server v5.48](./signal-server-5.48/)
 * [Signal Android](./signal-android/)
 * [Signal IOS](./signal-ios/)
 * [Signal Desktop](./signal-desktop/)
