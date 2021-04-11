@@ -1,214 +1,177 @@
-# twilio: # twilio configuration for sms otp
-#   accountId: AC731f045cf41a05a3143e3ad1bcf6dccc # your account id
-#   accountToken: a013f89478a7882f246bb10c005daccc # your account token
-#   localDomain: signal-poc.vispdevops.com # your domain
-#   numbers:
-#     - "+19417578202" # your twilio phone numbers
-twilio: # twilio configuration for sms otp
-  accountId:  # Twilio SID
-  accountToken:  # Twilio account token
-  nanpaMessagingServiceSid:  # Twilio SID for the messaging service to use for NANPA.
-  messagingServiceSid: # Twilio SID for the message service to use for non-NANPA.
-  localDomain: # Domain Twilio can connect back to for calls. Should be domain of your service.
-  iosVerificationText: "verification code is - %s" # Text to use for the verification message on iOS. Will be passed to String.format with the verification code as argument 1.
-  androidNgVerificationText: "verification code is - %s" # Text to use for the verification message on android-ng client types. Will be passed to String.format with the verification code as argument 1.
-  android202001VerificationText: "verification code is - %s" # Text to use for the verification message on android-2020-01 client types. Will be passed to String.format with the verification code as argument 1.
-  android202103VerificationText: "verification code is - %s" # Text to use for the verification message on android-2021-03 client types. Will be passed to String.format with the verification code as argument 1.
-  genericVerificationText: "verification code is - %s" # Text to use when the client type is unrecognized. Will be passed to String.format with the verification code as argument 1.
+abuseDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5432/signal
+
+accountDatabaseCrawler:
+  chunkSize: 1000
+  chunkIntervalMs : 8000
+
+accountsDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5432/signal
+
+apn:
+  sandbox: true
+  bundleId: test
+  keyId: test
+  teamId: test
+  signingKey: test
+
+appConfig:
+  application: test
+  environment: test
+  configuration: test
+
+awsAttachments:
+  accessKey: test
+  accessSecret: test
+  bucket: test
+  region: us-east-1
+
+backupService:
+  userAuthenticationTokenSharedSecret: test
+  uri: redis://127.0.0.1:6379/
+  backupCaCertificate: test
 
 cacheCluster:
   urls:
-    - redis://127.0.0.1:7000/
-appConfig: # AWS app config
-  application: signal-poc
-  environment: production
-  configuration: config.yml
+    - redis://127.0.0.1:6379/
 
-metricsCluster: # redis cluster
-  urls:
-    - redis://127.0.0.1:7000/
-    - redis://127.0.0.1:7001/
-    - redis://127.0.0.1:7002/
-    - redis://127.0.0.1:7003/
-micrometer:
+cdn:
+  accessKey: test
+  accessSecret: test
+  bucket: signal
+  region: us-east-1
 
-paymentsService:
-  userAuthenticationTokenSharedSecret: #
-  fixerApiKey: #
-  paymentCurrencies:
-    - USD
 clientPresenceCluster:
   urls:
-    - redis://127.0.0.1:7000/
-    - redis://127.0.0.1:7001/
-    - redis://127.0.0.1:7002/
-    - redis://127.0.0.1:7003/
-messageDynamoDb:
-  region: ap-south-1 # dynomo db bucket region
-  tableName: SignalMessages # table name
+    - redis://127.0.0.1:6379/
+
+directory:
+  client: 
+    userAuthenticationTokenSharedSecret: # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+    userAuthenticationTokenUserIdSecret: # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+  sqs:
+    accessKey: test
+    accessSecret: test
+    queueUrls:
+      - https://sqs.region.amazonaws.com/id/name.fifo
+  server:
+    -
+      replicationName: test
+      replicationUrl: http://127.0.0.1:9090
+      replicationPassword: password
+      replicationCaCertificate: |
+        -----BEGIN CERTIFICATE-----
+        .....
+        -----END CERTIFICATE-----
+
+gcm:
+  senderId: 12345
+  apiKey: test
+
+gcpAttachments:
+  domain: dummy.com
+  email: dummy@dummy.com
+  maxSizeInBytes: 1000000
+  pathPrefix: /
+  rsaSigningKey: "-----BEGIN RSA PRIVATE KEY-----\n ..... \n-----END RSA PRIVATE KEY-----\n"
 
 keysDynamoDb:
-  region: ap-south-1 # dynomo db bucket region
-  tableName: SignalKeys # table name
+  region: us-east-1
+  tableName: test
 
-backupService:
-  backupCaCertificate: |
-    -----BEGIN CERTIFICATE-----
-    
-    -----END CERTIFICATE-----
-  uri: # signal server domain
-  userAuthenticationTokenSharedSecret:  # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+messageCache:
+  cluster:
+    urls:
+      - redis://127.0.0.1:6379/
 
-storageService:
-  uri: # signal server domain
-  storageCaCertificate: |
-    -----BEGIN CERTIFICATE-----
-    
-     -----END CERTIFICATE-----
-  userAuthenticationTokenSharedSecret:  # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+messageDynamoDb:
+  region: us-east-1
+  tableName: test
+
+metricsCluster:
+  urls:
+    - test
+
+micrometer:
+  uri: proxy://localhost:2878
+  
+paymentsService:
+  userAuthenticationTokenSharedSecret: test
+  fixerApiKey: test
+  paymentCurrencies:
+    - USD
+
+pubsub:
+  url: redis://127.0.0.1:6379/cache
+  replicaUrls:
+    - redis://127.0.0.1:6379/cacheReplica
 
 push:
   queueSize: 200
 
-turn: # turn server configuration for voice & video call
-  secret: xxxxx # your turn server's secret
-  uris:
-    - stun:domain.com:3478 # change to your turn server domain
-    - stun:domain.com:5349 # change to your turn server domain
-    - turn:domain.com:5349?transport=udp # change to your turn server domain
-    - turn:domain.com:3478?transport=udp # change to your turn server domain
+pushSchedulerCluster:
+  urls:
+    - redis://127.0.0.1:6379/
 
-# cache: # redis server for cache cluster
-#   url: redis://127.0.0.1:7000/cache # change to your redis server
-#   replicaUrls:
-#     - redis://127.0.0.1:7000/cacheReplica # change to your redis server
+recaptcha:
+  secret: test
 
-directory:
-  # redis: # redis server for directory cluster
-  #   url: redis://127.0.0.1:7000/directory # change to your redis server
-  #   replicaUrls:
-  #     - redis://127.0.0.1:7000/directoryReplica # change to your redis server
-  client: # for communication with cds
-    userAuthenticationTokenSharedSecret:  # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
-    userAuthenticationTokenUserIdSecret:  # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
-  sqs: # sqs for queueing
-    accessKey:  # your aws iam access key
-    accessSecret:  # your aws iam access secret
-    queueUrls:
-      -  # your fifo queue url
-
-  server:
-    - replicationName: "singnal-replica"
-      replicationUrl: http://127.0.0.1:9090 # cds replication endpoint base url
-      replicationPassword: mypassword # cds replication endpoint password
-      replicationCaCertificate: |
-        -----BEGIN CERTIFICATE-----
-        
-
-        -----END CERTIFICATE-----
-
-messageCache: # redis server for message store cache
-  cluster:
-    urls:
-      - redis://127.0.0.1:7000/ # change to your redis server
-
-awsAttachments: # aws s3 configuration
-  accessKey:  # your aws iam access key
-  accessSecret:  # your aws iam access secret
-  bucket:  # your s3 bucket name
-  region: ap-south-1 # your region
-
-cdn: # aws cdn configuration
-  accessKey:  # your aws iam access key
-  accessSecret:  # your aws iam access secret
-  bucket:  # your s3 bucket name
-  region:  # your region
-
-gcpAttachments: # gcp storage configuration
-  domain: #GCP domain name
-  email:  # mail
-  maxSizeInBytes: 1000000
-  pathPrefix: /
-  rsaSigningKey: "-----BEGIN PRIVATE KEY-----\n-----END PRIVATE KEY-----\n"
-
-pubsub: # redis server for pubsub cache
-  url: redis://127.0.0.1:7000/cache # change to your redis server
-  replicaUrls:
-    - redis://127.0.0.1:7000/cacheReplica # change to your redis server
-
-remoteConfig: # remote configuration token
+remoteConfig:
   authorizedTokens:
     - dummy
+  globalConfig: 
+    dummy: dummy
 
-zkConfig: # zkgroup config, run using your build jar
-  serverSecret:  # java -jar TextSecure.jar zkparams
-  serverPublic:  # java -jar TextSecure.jar zkparams
-  enabled: true
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
 
-accountsDatabase: # database for account
-  driverClass: org.postgresql.Driver
-  user: postgres # change to your psql username
-  password: postgres # change to your psql password
-  url: jdbc:postgresql://127.0.0.1:5432/accountdb #change to your psql url, port, and database name
+storageService:
+  userAuthenticationTokenSharedSecret: test
+  uri: redis://127.0.0.1:6379/
+  storageCaCertificate: test
 
-# messageStore: # database for message
-#   driverClass: org.postgresql.Driver
-#   user: postgres # change to your psql username
-#   password: postgres # change to your psql password
-#   url: jdbc:postgresql://127.0.0.1:5432/messagedb #change to your psql url, port, and database name
+turn:
+  secret: secret# TURN server secret
+  uris:
+    - stun:example.com:3478
+    - stun:example.com:5349
+    - turn:example.com:3478?transport=udp
+    - turn:example.com:5349?transport=udp
 
-abuseDatabase: # database for abuse
-  driverClass: org.postgresql.Driver
-  user: postgres # change to your psql username
-  password: postgres # change to your psql password
-  url: jdbc:postgresql://127.0.0.1:5432/abusedb #change to your psql url, port, and database name
+twilio:
+  accountId: test
+  accountToken: test
+  nanpaMessagingServiceSid: test
+  messagingServiceSid: test
+  localDomain: example.com
+  iosVerificationText: "verification code is - %s"
+  androidNgVerificationText: "verification code is - %s"
+  android202001VerificationText: "verification code is - %s"
+  android202103VerificationText: "verification code is - %s"
+  genericVerificationText: "verification code is - %s"
 
-gcm: # firebase messaging
-  senderId:  # your sender id
-  apiKey:  # your api key
-
-recaptcha: # google recaptcha v3
-  secret:  # your recaptcha secret
-
-accountDatabaseCrawler: # crawler for account database
-  chunkSize: 1000
-  chunkIntervalMs: 1000000
-
-apn: # apple push nottification, just use this value if you don't plan to develop signal ios
-  teamId: "signal"
-  signingKey: |
-    -----BEGIN CERTIFICATE-----
-    
-    -----END CERTIFICATE-----
-
-  keyId: |
-
-    -----BEGIN RSA PRIVATE KEY-----
-    
-    -----END RSA PRIVATE KEY-----
-  bundleId: com.notused
-  sandbox: true
-
-unidentifiedDelivery: # unidentified delivery or untrusted sender root, run using your build jar & config
-  certificate: 
-  privateKey: 
+unidentifiedDelivery:
+  certificate: test # java -jar TextSecureServer.jar certificate -ca
+  privateKey: test # java -jar TextSecureServer.jar certificate --key priv_key_from_step_above --id key_ID
   expiresDays: 365
 
-voiceVerification: # voice otp verification, afaik it use vox service
-  url: https://server.chatapp.net
+voiceVerification:
+  url: https://example.com
   locales:
     - en
 
-pushSchedulerCluster: # redis server for push scheduler
-  urls:
-    - redis://127.0.0.1:7000 # change to your redis server
-
-logging:
-  level: INFO
-server: # server configuration
-  applicationConnectors:
-    - type: http
-      port: 8080 # your signal server will run on this port
-  adminConnectors:
-    - type: http
-      port: 8081 # your signal server admin will run on this port
+zkConfig: 
+  serverSecret: test # java -jar TextSecure.jar zkparams
+  serverPublic: test # java -jar TextSecure.jar zkparams
+  enabled: true
