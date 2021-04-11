@@ -9,11 +9,15 @@ These guides are provided as-is, please refer to Issue section of this readme fi
 Please do not contact me through my personal line or social media.
 
 ## Requirements
-* SSL Certificate of your server's domain (For secure communication, can be bypassed but it will be less secure)
+* SSL Certificate of your server's domain (For secure communication)
 * Google Recaptcha (For anti-spam in authentication)
-* Firebase (For push notification, if not used, the notification will not work correctly)
-* Twilio (For SMS OTP, can be by passsed by priting the OTP to another means to user)
-* Amazon Web Service (For Profile Picture / Avatar, Attachments, and CDS Queue. Can be subtituted with MinIO & LocalStack)
+* Firebase (For push notification)
+* Twilio (For SMS OTP & Voice Call)
+* AWS S3 & Cloudfront (For Attachments & CDN. Can be subtituted with MinIO & LocalStack)
+* AWS SQS (For CDS queue)
+* AWS DynamoDB (For nosql database)
+* Micrometer (For monitoring)
+* Fixer (For payment)
 
 ## Content
 What's proven works
