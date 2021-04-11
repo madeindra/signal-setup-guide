@@ -16,7 +16,7 @@ These guides are provided as-is, please refer to Issue section of this readme fi
 What's proven works
 * [Signal Server v2.92](./signal-server-2.92/)
 * [Signal Server v3.21](./signal-server-3.21/)
-* * [Signal Server v5.48](./signal-server-5.48/)
+* [Signal Server v5.48](./signal-server-5.48/)
 * [Signal Android](./signal-android/)
 * [Signal IOS](./signal-ios/)
 * [Signal Desktop](./signal-desktop/)
