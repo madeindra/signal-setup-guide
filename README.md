@@ -83,12 +83,3 @@ You are welcome to contribute on this guide, please fork the repository and crea
 If you have any questions please create a discussion instead of issue.
 
 You are recommended to <a href="https://github.com/madeindra/setup-guide/discussions/new">open a discussion thread here</a> if you face a difficulties to let the communities help you too and contributing to the communities in the process.
-
-## Donating
-You can donate to me if you think this guide has helped you, your donation will greatly appreciated.
-
-Bitcoin (BTC):
-
-<img src="https://raw.githubusercontent.com/madeindra/setup-guide/master/.resources/btc-address.png" alt="16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2" width="150">
-
-<a href = "bitcoin:16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2">16xY3wXVNmRqBzbyQpE3VpYawbjuXkyDe2</a>
