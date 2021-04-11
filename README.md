@@ -3,7 +3,10 @@ On this repository, you will find guides about Signal Setup that might help peop
 
 ## Disclaimer
 This repository is not an official Signal Guide and there is no relation to the team behind Signal. It's just a guide written outside my work-time to help people. 
-These guides are provided as-is, please refer to Issue section of this readme file for more information regarding this guide. Please do not contact me through my personal line or social media.
+
+These guides are provided as-is, please refer to Issue section of this readme file for more information regarding this guide.
+
+Please do not contact me through my personal line or social media.
 
 ## Requirements
 * SSL Certificate of your server's domain (For secure communication, can be bypassed but it will be less secure)
