@@ -18,12 +18,12 @@ git clone https://github.com/signalapp/Signal-Server
 cd Signal-Server
 ```
 
-2. Install
+2. Install (There would be some error here, the build will fail)
 ```
 mvn install
 ```
 
-3. Compile
+3. Compile (There would be some error, but all service should be success on build)
 ```
 mvn -e -B package
 ```
