@@ -29,3 +29,5 @@ mvn -e -B package
 ```
 
 4. Create config.yml, [see example](./config.yml)
+
+Steps to run the server will be updated
