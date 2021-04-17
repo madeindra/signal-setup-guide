@@ -23,7 +23,7 @@ Please do not contact me through my personal line or social media.
 What's proven works
 * [Signal Server v2.92](./signal-server-2.92/)
 * [Signal Server v3.21](./signal-server-3.21/)
-* [Signal Server v5.48](./signal-server-5.48/)
+* [Signal Server v5.xx](./signal-server-5.xx/)
 * [Signal Android](./signal-android/)
 * [Signal IOS](./signal-ios/)
 * [Signal Desktop](./signal-desktop/)
