@@ -49,3 +49,15 @@ mvn -e -B package
 4. Create config.yml, [see example](./config.yml)
 
 Steps to run the server will be updated
+
+## Running with docker
+**This docker containers only support some dependency that can be run locally.**
+
+1. Copy `docker-compose.yml`
+
+2. Start the compose
+```
+docker-compose start -D
+```
+
+3. Run the server with your config
