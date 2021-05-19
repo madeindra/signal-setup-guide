@@ -13,6 +13,7 @@ services:
       - '5432:5432'
     volumes:
       - ./postgres_database:/var/lib/postgresql/data
+      - ./pg-init-scripts:/docker-entrypoint-initdb.d
   redis_main:
     image: redis:5
     container_name: redis_main
