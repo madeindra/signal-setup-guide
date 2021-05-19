@@ -36,12 +36,12 @@ git clone https://github.com/signalapp/Signal-Server
 cd Signal-Server
 ```
 
-2. Install (There would be some error here, the build will fail)
+2. Fetch dependencies
 ```
-mvn install
+mvn dependency:go-offline
 ```
 
-3. Compile (There would be some error, but all service should be success on build)
+3. Compile
 ```
 mvn -e -B package
 ```
