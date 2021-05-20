@@ -1,0 +1,184 @@
+# Number must be in "" to include +
+# Code must be 6 digits long
+testDevices:
+  - number: "+44..."
+    code: 111111
+
+abuseDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5433/abusedb
+
+accountDatabaseCrawler:
+  chunkSize: 1000
+  chunkIntervalMs : 8000
+
+accountsDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5432/accountdb
+
+messageStore:
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5434/messagedb
+
+apn:
+  sandbox: true
+  bundleId: test
+  keyId: test
+  teamId: test
+  signingKey: |   # openssl genpkey -out rsakey.pem -algorithm EC -pkeyopt ec_paramgen_curve:P-256
+    -----BEGIN PRIVATE KEY-----
+    -----END PRIVATE KEY-----
+
+awsAttachments:
+  accessKey: test
+  accessSecret: test
+  bucket: test
+  region: us-east-1
+
+backupService:
+  userAuthenticationTokenSharedSecret: 6b9cf1432f4dc50f991bdab29ff44377
+
+cacheCluster:
+  urls:
+    - redis://127.0.0.1:7000/
+
+cdn:
+  accessKey: test
+  accessSecret: test
+  bucket: signal
+  region: us-east-1
+
+directory:
+  redis:
+    url: redis://127.0.0.1:7000/directory
+    replicaUrls:
+      - redis://127.0.0.1:7000/directoryReplica
+  client:
+    userAuthenticationTokenSharedSecret: # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+    userAuthenticationTokenUserIdSecret: # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+  sqs:
+    accessKey: test
+    accessSecret: test
+    queueUrls:
+      - https://sqs.region.amazonaws.com/id/name.fifo
+  server:
+    - replicationName: test
+      replicationUrl: http://127.0.0.1:9090
+      replicationPassword: password
+      replicationCaCertificate: |  # https://www.ibm.com/docs/en/runbook-automation?topic=certificate-generate-root-ca-key
+        -----BEGIN CERTIFICATE-----
+        -----END CERTIFICATE-----
+        -----BEGIN RSA PRIVATE KEY-----
+        -----END RSA PRIVATE KEY-----
+
+gcm:
+  senderId: 12345
+  apiKey: test
+
+gcpAttachments:
+  domain: dummy.com
+  email: dummy@dummy.com
+  maxSizeInBytes: 1000000
+  pathPrefix: /
+  rsaSigningKey: |  # openssl genpkey -out rsakey.pem -algorithm RSA -pkeyopt rsa_keygen_bits:2048
+    -----BEGIN PRIVATE KEY-----
+    -----END PRIVATE KEY-----
+
+messageCache:
+  cluster:
+    urls:
+      - redis://127.0.0.1:7000/
+
+metricsCluster:
+  urls:
+    - redis://127.0.0.1:7000/
+
+micrometer:
+  uri: proxy://localhost:2878
+
+paymentsService:
+  userAuthenticationTokenSharedSecret: 6b9cf1432f4dc50f991bdab29ff44377
+
+pubsub:
+  url: redis://127.0.0.1:7000/cache
+  replicaUrls:
+    - redis://127.0.0.1:7000/cacheReplica
+
+push:
+  queueSize: 200
+
+pushScheduler:
+  url: redis://127.0.0.1:7000/pushScheduler
+  replicaUrls:
+    - redis://127.0.0.1:7000/pushSchedulerReplica
+
+recaptcha:
+  secret: test
+
+remoteConfig:
+  authorizedTokens:
+    - dummy
+  globalConfig:
+    dummy: dummy
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8081
+  adminConnectors:
+    - type: http
+      port: 8082
+
+storageService:
+  userAuthenticationTokenSharedSecret: 6b9cf1432f4dc50f991bdab29ff44377
+  uri: redis://127.0.0.1:7000/
+
+turn:
+  secret: secret# TURN server secret
+  uris:
+    - stun:example.com:3478
+    - stun:example.com:5349
+    - turn:example.com:3478?transport=udp
+    - turn:example.com:5349?transport=udp
+
+twilio:
+  accountId: test
+  accountToken: test
+  nanpaMessagingServiceSid: test
+  messagingServiceSid: test
+  localDomain: example.com
+  iosVerificationText: "verification code is - %s"
+  androidNgVerificationText: "verification code is - %s"
+  android202001VerificationText: "verification code is - %s"
+  genericVerificationText: "verification code is - %s"
+  numbers:
+    - test
+  senderId:
+    defaultSenderId: test
+
+# Generate public and private with: java -jar TextSecureServer.jar certificate -ca
+# Generate certificate with: java -jar TextSecureServer-4.97.jar certificate --key PRIVATE_KEY = --id 1
+unidentifiedDelivery:
+  certificate:
+  privateKey:
+  expiresDays: 365
+
+voiceVerification:
+  url: https://example.com
+  locales:
+    - en
+
+zkConfig:
+  serverSecret: # java -jar TextSecure.jar zkparams
+  serverPublic: # java -jar TextSecure.jar zkparams
+  enabled: true
+
+featureFlag:
+  authorizedTokens:
+    - test
