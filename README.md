@@ -83,6 +83,7 @@ This guide has been written by the help of the developers from community.
 * [madeindra](https://github.com/madeindra/setup-guide) compiled the guide, improve the steps, and wrote more guide on uncovered topics
 * [sinholic](https://github.com/sinholic) wrote iOS guide
 * [amargarido](https://github.com/amargarido) helped to improve the readme
+* [jacob-pro ](https://github.com/jacob-pro) added v4.xx guide & helped improving v5.xx
 
 You are welcome to contribute on this guide, please fork the repository and create a Pull Request.
 
