@@ -95,6 +95,7 @@ cd Signal-iOS && make dependencies
 Remove the `attachments/` those line code
 
 6. Convert your SSL certificate to DER format and change the `textsecure.cer` on `SignalServiceKit/Resources/Certificates/textsecure.cer`
+7. to setup the ssl certificate fllow -> 1 creat ssl with lets-encrypt  2- download ssl from  this path /etc/letsencrypt/live/domain.com/fullchain.pem and /etc/letsencrypt/live/domain.com/privkey.pem  and convert this two ssl with this site https://www.httpcs.com/en/ssl-converter 2-> upload fullchain.pem and privkey.pem  and select Final conversion format  select DER (.der, .cer) then press convert , 3-> dowloaded certificate and rename it to textsecure.cer 4-> add this in SignalServiceKit/Resources/Certificates folder 
 
-7. Run your project with Simulator or iOS Phone
+8. Run your project with Simulator or iOS Phone
 
