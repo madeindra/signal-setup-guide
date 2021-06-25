@@ -1,0 +1,116 @@
+since twillo cost you higer price for testing and most of server are onpremise its optional and cost effective to use other server like smsgateway.me or local smpp service provide OTP services so there is quick way of fixing that issues 
+# you need to add another class like in my case inside \service\src\main\java\org\whispersystems\textsecuregcm\sms
+EthioTeleSmsSender.java
+
+
+public class EthioTeleSmsSender {
+  private final String            deviceId;
+  private final String            apiKey;
+  static final String SMS_VERIFICATION_TEXT     = "your app verification code is :%s\";
+    
+  public EthioTeleSmsSender(EthioTeleConfiguration config) {
+    this.deviceId           = config.getDeviceId   ();
+    this.apiKey        = config.getApiKey();
+  }
+  //String username, String password, String to, String message,
+  public void deliverSmsVerification(String destination,  Optional<String> clientType, String verificationCode)
+  {
+    
+    String message = String.format(SMS_VERIFICATION_TEXT, verificationCode);
+    try {
+     String[] curl = new String[]{
+        "curl",
+        "--header", String.format("Authorization: %s", this.apiKey)
+        ,"--request",
+        "POST",
+        "--data",
+        String.format("[{\"phone_number\": \"%s\",\"message\": \"%s\",\"device_id\":\"%s\"}]", destination, message, this.deviceId),
+        "https://smsgateway.me/api/v4/message/send"
+    };
+
+    // System.out.println("Curl value : %s" + curl);
+    Process proc = Runtime.getRuntime().exec(curl);
+
+    InputStream stderr = proc.getErrorStream();
+            InputStreamReader isr = new InputStreamReader(stderr);
+            BufferedReader br = new BufferedReader(isr);
+            String line = null;
+            System.out.println("<ERROR>");
+            while ( (line = br.readLine()) != null)
+                System.out.println(line);
+            System.out.println("</ERROR>");
+            int exitVal = proc.waitFor();
+            System.out.println("Process exitValue: " + exitVal);
+     } catch (Throwable ex) {}
+	  System.out.println(" id: "+ this.deviceId);	
+  }
+
+ 
+
+  public void deliverVoxVerification(String destination, Optional<String> clientType, String verificationCode) {
+    //ethioTeleSender.deliverVoxVerification(destination, verificationCode, locale);
+  }
+ 
+
+}
+add the following class inside service\src\main\java\org\whispersystems\textsecuregcm\configuration
+public class EthioTeleConfiguration {
+
+  //@NotNull
+  @JsonProperty
+  private String deviceId;
+
+  //@NotNull
+  @JsonProperty
+  private String apiKey;
+
+  public String getDeviceId() {
+    return deviceId;
+  }
+
+  public String getApiKey() {
+    return apiKey;
+  }
+}
+
+
+
+
+
+you need to also modify the smssender.java
+add the following code
+ 
+ private final EthioTeleSmsSender ethioTeleSender;
+
+  public SmsSender(EthioTeleSmsSender ethioTeleSender)
+  {
+    this.ethioTeleSender = ethioTeleSender;
+  }
+  //String username, String password, String to, String message, 
+  public void deliverSmsVerification(String destination,  Optional<String> clientType, String verificationCode) {
+    // Fix up mexico numbers to 'mobile' format just for SMS delivery.
+    if (destination.startsWith("+52") && !destination.startsWith("+521")) {
+      destination = "+521" + destination.substring(3);
+    }
+
+    //twilioSender.deliverSmsVerification(destination, clientType, verificationCode);
+        ethioTeleSender.deliverSmsVerification(destination, clientType, verificationCode);
+
+  }
+modify the WhisperServerService.java class 
+    EthioTeleSmsSender       ethioTeleSmsSender  = new EthioTeleSmsSender(config.getEthioTeleConfiguration()); 
+    SmsSender                smsSender           = new SmsSender(ethioTeleSmsSender);
+modify the WhisperServerConfiguration.java class 
+add  the following 
+@JsonProperty
+  private EthioTeleConfiguration ethiotele;
+
+
+  public EthioTeleConfiguration getEthioTeleConfiguration() {
+    return ethiotele;
+  }
+  finaly we need to add deviceId and apiKey to config.yml get register from https://smsgateway.me/ get the android app from https://m.apkpure.com/sms-gateway-api/networked.solutions.sms.gateway.api
+  ethiotele:
+  deviceid: 123456
+  apikey: eyJ0eXAiOiJKV1QiLCJhbGcfdfdNiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTYyMzMxNTM0NywiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjg5MDU5LCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.P6gQSwcV6VkxcP0kmB8vNZPVVJL5aZQz7k1KCR9R6Bo
+
