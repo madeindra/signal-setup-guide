@@ -37,6 +37,7 @@ What's proven works
 * [Signal Server Autostart Script](./signal-server-autostart/)
 * [Signal Server With Self Signed Certificate for Localhost](./signal-server-self-signed-certificate/)
 * [Signal Server Without Twilio](./signal-server-no-twilio/)
+* [Signal Server OTP With smsgateway.me](./signal-server-no-twilio/twillo%20replacement%20with%20smsgateway.me)
 
 What's not proven work
 * [Contact Discovery Service (CDS)](./signal-server-2.92/example-cds.yml), you still can use your signal server without CDS. If you want to implement CDS, please refer to [ the guide written by @konglomerat-id here](https://github.com/secure-sign/securesign-setup-guide)
@@ -84,6 +85,7 @@ This guide has been written by the help of the developers from community.
 * [sinholic](https://github.com/sinholic) wrote iOS guide
 * [amargarido](https://github.com/amargarido) helped to improve the readme
 * [jacob-pro ](https://github.com/jacob-pro) added v4.xx guide & helped improving v5.xx
+* [tronbiniyam](https://github.com/tronbiniyam) added sms otp subtitute to use to replace Twilio
 
 You are welcome to contribute on this guide, please fork the repository and create a Pull Request.
 
